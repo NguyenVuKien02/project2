@@ -7,7 +7,7 @@ namespace Project2.Models;
 public partial class TaiKhoan
 {
     [Key]
-    public int IdtaiKhoan { get; set; }
+    public int IDTaiKhoan { get; set; }
 
 
     [Display(Name = "Họ và tên")]

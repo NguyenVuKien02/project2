@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project2.Models;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +15,7 @@ builder.Services.AddControllersWithViews();
 
 // Cấu hình Database
 builder.Services.AddDbContext<WebBanDoAnNhanhContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Web_ban_do_an_nhanh")));
 
 // ⭐ QUAN TRỌNG: Cấu hình Session
 builder.Services.AddDistributedMemoryCache();

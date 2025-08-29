@@ -161,13 +161,13 @@ public partial class WebBanDoAnNhanhContext : DbContext
 
         modelBuilder.Entity<TaiKhoan>(entity =>
         {
-            entity.HasKey(e => e.IdtaiKhoan).HasName("PK__TaiKhoan__BC5F907CDA8B115D");
+            entity.HasKey(e => e.IDTaiKhoan).HasName("PK__TaiKhoan__BC5F907CDA8B115D");
 
             entity.ToTable("TaiKhoan");
 
             entity.HasIndex(e => e.Email, "UQ__TaiKhoan__A9D10534B27F174F").IsUnique();
 
-            entity.Property(e => e.IdtaiKhoan).HasColumnName("IDTaiKhoan");
+            entity.Property(e => e.IDTaiKhoan).HasColumnName("IDTaiKhoan");
             entity.Property(e => e.Address).HasMaxLength(255);
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
