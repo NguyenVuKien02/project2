@@ -98,8 +98,7 @@
               "RelativeToolTip": "Views\\Admin\\Index.cshtml",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAADYAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T03:41:52.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T03:41:52.792Z"
             },
             {
               "$type": "Document",
@@ -111,8 +110,7 @@
               "RelativeToolTip": "Controllers\\AdminController.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAxwBMAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T03:35:57.217Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T03:35:57.217Z"
             },
             {
               "$type": "Document",
@@ -124,8 +122,7 @@
               "RelativeToolTip": "Controllers\\AdminDonHangController.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwBMAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T03:39:20.26Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T03:39:20.26Z"
             },
             {
               "$type": "Document",
@@ -137,8 +134,7 @@
               "RelativeToolTip": "Controllers\\AdminSanPhamController.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAqwBQAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T03:38:23.489Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T03:38:23.489Z"
             },
             {
               "$type": "Document",
@@ -146,9 +142,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACUAAAARAAAAAAAAAA==",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-26T10:07:55.125Z",
               "EditorCaption": ""
@@ -163,8 +159,7 @@
               "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
               "ViewState": "AgIAAFcAAAAAAAAAAAAowGQAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T11:36:56.729Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-25T11:36:56.729Z"
             },
             {
               "$type": "Document",
@@ -176,8 +171,7 @@
               "RelativeToolTip": "Views\\Shared\\_AdminLayout.cshtml",
               "ViewState": "AgIAADwAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T03:40:39.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-28T03:40:39.543Z"
             },
             {
               "$type": "Document",
@@ -189,8 +183,7 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAABAAAAAAAAAAAAAUwCIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T16:01:06.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-26T16:01:06.337Z"
             },
             {
               "$type": "Document",
@@ -202,8 +195,7 @@
               "RelativeToolTip": "Views\\TaiKhoan\\DangKi.cshtml",
               "ViewState": "AgIAACEAAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T15:59:21.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-26T15:59:21.778Z"
             },
             {
               "$type": "Document",
@@ -215,8 +207,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-25T11:23:12.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-25T11:23:12.061Z"
             },
             {
               "$type": "Document",
@@ -228,8 +219,7 @@
               "RelativeToolTip": "Views\\TaiKhoan\\DangNhap.cshtml",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T16:00:04.53Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-26T16:00:04.53Z"
             },
             {
               "$type": "Document",
