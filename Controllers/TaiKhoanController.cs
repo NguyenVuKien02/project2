@@ -45,7 +45,7 @@ namespace Project2.Controllers
                         Phone = model.Phone ?? "",
                         Password = model.Password,
                         Address = model.Address ?? "",
-                        Role = "Customer",
+                        Role = "customer",
                         NgayDangKi = DateTime.Now
                     };
 
@@ -90,11 +90,15 @@ namespace Project2.Controllers
                     // Lưu thông tin vào Session
                     HttpContext.Session.SetString("UserId", user.IDTaiKhoan.ToString());
                     HttpContext.Session.SetString("UserName", user.FullName ?? "");
-                    HttpContext.Session.SetString("UserRole", user.Role ?? "Customer");
+                    HttpContext.Session.SetString("UserRole", user.Role ?? "customer");
                     HttpContext.Session.SetString("UserEmail", user.Email ?? "");
 
+                    // Debug: Log thông tin để kiểm tra
+                    System.Diagnostics.Debug.WriteLine($"User Role: {user.Role}");
+                    System.Diagnostics.Debug.WriteLine($"Session Role: {HttpContext.Session.GetString("UserRole")}");
+
                     // Nếu là Admin → về trang quản trị
-                    if (user.Role == "Admin")
+                    if (string.Equals(user.Role, "admin", StringComparison.OrdinalIgnoreCase))
                         return RedirectToAction("Index", "Admin");
                     else
                         return RedirectToAction("Index", "Home");

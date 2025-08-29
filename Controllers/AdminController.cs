@@ -16,7 +16,8 @@ namespace Project2.Controllers
         private bool IsAdmin()
         {
             var userRole = HttpContext.Session.GetString("UserRole");
-            return userRole == "Admin";
+            // Sửa: Kiểm tra cả "Admin" và "admin" (case insensitive)
+            return string.Equals(userRole, "admin", StringComparison.OrdinalIgnoreCase);
         }
 
         // Redirect nếu không phải admin
@@ -35,7 +36,7 @@ namespace Project2.Controllers
 
             // Thống kê cơ bản
             ViewBag.TongSanPham = _context.SanPhams.Count();
-            ViewBag.TongKhachHang = _context.TaiKhoans.Where(t => t.Role == "Customer").Count();
+            ViewBag.TongKhachHang = _context.TaiKhoans.Where(t => t.Role == "customer").Count();
             ViewBag.TongDonHang = _context.DonHangs.Count();
 
             return View();

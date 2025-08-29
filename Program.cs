@@ -6,24 +6,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//// Add services to the container.
-//builder.Services.AddControllersWithViews();
-
-//var connectionString = builder.Configuration.GetConnectionString("WebBanDoAnNhanh");
-//builder.Services.AddDbContext<WebBanDoAnNhanhContext>(x => x.UseSqlServer(connectionString));
-
-
 // Cấu hình Database
 builder.Services.AddDbContext<WebBanDoAnNhanhContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Web_ban_do_an_nhanh")));
+    options.UseSqlServer("Server=LAPTOP-KNT8DC45;Database=Web_ban_do_an_nhanh;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True"));
 
-// ⭐ QUAN TRỌNG: Cấu hình Session
+//Cấu hình Session
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
+    options.Cookie.Name = ".AspNetCore.Session";
 });
 
 var app = builder.Build();
@@ -40,7 +34,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+// QUAN TRỌNG: UseSession() phải được gọi TRƯỚC UseAuthorization()
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(

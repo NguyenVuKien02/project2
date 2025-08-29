@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\taikhoan\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\taikhoan\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\admin\\adminindex.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\admin\\adminindex.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\controllers\\admindonhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:controllers\\admindonhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\taikhoan\\dangki.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\taikhoan\\dangki.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\controllers\\adminsanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,20 +15,48 @@
       "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\controllers\\admindonhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:controllers\\admindonhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\taikhoan\\dangki.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\taikhoan\\dangki.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\taikhoan\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\taikhoan\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\models\\webbandoannhanhcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:models\\webbandoannhanhcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A571EA3E-21DC-4F1E-9051-E04A294935B1}|Project2.csproj|e:\\web b\u00E1n \u0111\u1ED3 \u0103n\\project2\\models\\viewmodel\\dangkiviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,15 +90,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminDonHangController.cs",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminDonHangController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminDonHangController.cs",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminDonHangController.cs",
-              "RelativeToolTip": "Controllers\\AdminDonHangController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwB0AAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T03:39:20.26Z"
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Index.cshtml",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-28T03:41:52.792Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -108,25 +109,79 @@
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
               "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB4AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBMAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T03:35:57.217Z"
+              "WhenOpened": "2025-08-28T03:35:57.217Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminIndex.cshtml",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Admin\\AdminIndex.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\AdminIndex.cshtml",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Admin\\AdminIndex.cshtml",
-              "RelativeToolTip": "Views\\Admin\\AdminIndex.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T03:41:52.792Z"
+              "DocumentIndex": 4,
+              "Title": "AdminDonHangController.cs",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminDonHangController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminDonHangController.cs",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminDonHangController.cs",
+              "RelativeToolTip": "Controllers\\AdminDonHangController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBMAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T03:39:20.26Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AdminSanPhamController.cs",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminSanPhamController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminSanPhamController.cs",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminSanPhamController.cs",
+              "RelativeToolTip": "Controllers\\AdminSanPhamController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAqwBQAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T03:38:23.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T10:07:55.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TaiKhoanController.cs",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\TaiKhoanController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TaiKhoanController.cs",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\TaiKhoanController.cs",
+              "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAowGQAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T11:36:56.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-28T03:40:39.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -134,36 +189,51 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAABAAAAAAAAAAAAAUwCIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T16:01:06.337Z"
+              "WhenOpened": "2025-08-26T16:01:06.337Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
+              "Title": "DangKi.cshtml",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\TaiKhoan\\DangKi.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaiKhoan\\DangKi.cshtml",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\TaiKhoan\\DangKi.cshtml",
+              "RelativeToolTip": "Views\\TaiKhoan\\DangKi.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-26T15:59:21.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-25T11:23:12.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "DangNhap.cshtml",
               "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\TaiKhoan\\DangNhap.cshtml",
               "RelativeDocumentMoniker": "Views\\TaiKhoan\\DangNhap.cshtml",
               "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\TaiKhoan\\DangNhap.cshtml",
               "RelativeToolTip": "Views\\TaiKhoan\\DangNhap.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-26T16:00:04.53Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_AdminLayout.cshtml",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_AdminLayout.cshtml",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-28T03:40:39.543Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
@@ -175,31 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DangKi.cshtml",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\TaiKhoan\\DangKi.cshtml",
-              "RelativeDocumentMoniker": "Views\\TaiKhoan\\DangKi.cshtml",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Views\\TaiKhoan\\DangKi.cshtml",
-              "RelativeToolTip": "Views\\TaiKhoan\\DangKi.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-26T15:59:21.778Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AdminSanPhamController.cs",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminSanPhamController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminSanPhamController.cs",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\AdminSanPhamController.cs",
-              "RelativeToolTip": "Controllers\\AdminSanPhamController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T03:38:23.489Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "TaiKhoan.cs",
               "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Models\\TaiKhoan.cs",
               "RelativeDocumentMoniker": "Models\\TaiKhoan.cs",
@@ -211,19 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TaiKhoanController.cs",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\TaiKhoanController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TaiKhoanController.cs",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Controllers\\TaiKhoanController.cs",
-              "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAswIMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T11:36:56.729Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "WebBanDoAnNhanhContext.cs",
               "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Models\\WebBanDoAnNhanhContext.cs",
               "RelativeDocumentMoniker": "Models\\WebBanDoAnNhanhContext.cs",
@@ -232,30 +266,6 @@
               "ViewState": "AgIAAKAAAAAAAAAAAAAtwKkAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-25T11:19:29.827Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABEAAABcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T10:07:55.125Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "E:\\web b\u00E1n \u0111\u1ED3 \u0103n\\Project2\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-25T11:23:12.061Z"
             },
             {
               "$type": "Document",
