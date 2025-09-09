@@ -1,0 +1,122 @@
+﻿@model DonHang
+@{
+    ViewData["Title"] = $"Chi tiết đơn hàng #{Model.IddonHang}";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Chi tiết đơn hàng #@Model.IddonHang</h2>
+            <div>
+                <span class="badge @(GetStatusClass(Model.Status)) fs-6">@Model.Status</span>
+                <a href="@Url.Action("Index")" class="btn btn-outline-secondary ms-2">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-list"></i> Chi tiết sản phẩm</h5>
+            </div>
+            <div class="card-body">
+                @foreach (var item in Model.ChiTietDonHangs)
+                {
+                    <div class="row mb-3 pb-3 border-bottom">
+                        <div class="col-md-2">
+                            <img src="~/images/@item.IdsanPhamNavigation?.AnhSanPham"
+                                 class="img-fluid rounded"
+                                 alt="@item.IdsanPhamNavigation?.TenSanPham"
+                                 style="height: 60px; object-fit: cover;"
+                                 onerror="this.src='~/images/default-food.jpg'">
+                        </div>
+                        <div class="col-md-6">
+                            <h6>@item.IdsanPhamNavigation?.TenSanPham</h6>
+                            <p class="text-muted mb-0">@item.Gia.ToString("N0") VNĐ x @item.SoLuong</p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <span class="fw-bold">@((item.Gia * item.SoLuong).ToString("N0")) VNĐ</span>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-8 text-end">
+                        <strong>Tổng cộng:</strong>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <span class="h5 text-danger">@Model.TongTien?.ToString("N0") VNĐ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-user"></i> Thông tin khách hàng</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Họ tên:</strong><br>@Model.IdtaiKhoanNavigation?.FullName</p>
+                <p><strong>Email:</strong><br>@Model.IdtaiKhoanNavigation?.Email</p>
+                <p><strong>Số điện thoại:</strong><br>@Model.IdtaiKhoanNavigation?.Phone</p>
+                <p><strong>Địa chỉ giao hàng:</strong><br>@Model.DiaChiGiaoHang</p>
+                <p><strong>Ngày đặt:</strong><br>@Model.NgayTaoDonHang?.ToString("dd/MM/yyyy HH:mm")</p>
+            </div>
+        </div>
+
+        @if (Model.Status == "Chờ xác nhận")
+        {
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-cog"></i> Thao tác</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="UpdateStatus" method="post">
+                        <input type="hidden" name="id" value="@Model.IddonHang" />
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" name="status" value="Hoàn thành"
+                                    class="btn btn-success"
+                                    onclick="return confirm('Xác nhận hoàn thành đơn hàng này?')">
+                                <i class="fas fa-check"></i> Xác nhận hoàn thành
+                            </button>
+
+                            <button type="submit" name="status" value="Đã hủy"
+                                    class="btn btn-danger"
+                                    onclick="return confirm('Hủy đơn hàng này?')">
+                                <i class="fas fa-times"></i> Hủy đơn hàng
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info mt-3">
+                <i class="fas fa-info-circle"></i>
+                Đơn hàng đã được xử lý với trạng thái: <strong>@Model.Status</strong>
+            </div>
+        }
+    </div>
+</div>
+
+@functions {
+    public string GetStatusClass(string status)
+    {
+        return status switch
+        {
+            "Chờ xác nhận" => "bg-warning text-dark",
+            "Hoàn thành" => "bg-success",
+            "Đã hủy" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}

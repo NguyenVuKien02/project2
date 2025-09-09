@@ -1,0 +1,88 @@
+﻿@model List<DonHang>
+@{
+    ViewData["Title"] = "Quản lý đơn hàng";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Quản lý đơn hàng</h2>
+    <div>
+        <span class="badge bg-primary">Tổng: @Model.Count đơn hàng</span>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><strong>#@item.IddonHang</strong></td>
+                    <td>
+                        <div>
+                            <strong>@item.IdtaiKhoanNavigation?.FullName</strong><br>
+                            <small class="text-muted">@item.IdtaiKhoanNavigation?.Email</small>
+                        </div>
+                    </td>
+                    <td>@item.NgayTaoDonHang?.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td><span class="text-danger fw-bold">@item.TongTien?.ToString("N0") VNĐ</span></td>
+                    <td>
+                        <span class="badge @(GetStatusClass(item.Status))">
+                            @item.Status
+                        </span>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", new { id = item.IddonHang })"
+                           class="btn btn-info btn-sm">
+                            <i class="fas fa-eye"></i> Chi tiết
+                        </a>
+
+                        @if (item.Status == "Chờ xác nhận")
+                        {
+                            <form asp-action="UpdateStatus" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@item.IddonHang" />
+                                <input type="hidden" name="status" value="Hoàn thành" />
+                                <button type="submit" class="btn btn-success btn-sm"
+                                        onclick="return confirm('Xác nhận hoàn thành đơn hàng này?')">
+                                    <i class="fas fa-check"></i> Xác nhận
+                                </button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5">
+        <i class="fas fa-receipt fa-3x text-muted mb-3"></i>
+        <h4>Chưa có đơn hàng nào</h4>
+        <p class="text-muted">Các đơn hàng từ khách hàng sẽ hiển thị tại đây.</p>
+    </div>
+}
+
+@functions {
+    public string GetStatusClass(string status)
+    {
+        return status switch
+        {
+            "Chờ xác nhận" => "bg-warning text-dark",
+            "Hoàn thành" => "bg-success",
+            "Đã hủy" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}

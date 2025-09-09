@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Admin Panel</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
         .sidebar {
             position: fixed;
@@ -15,7 +16,9 @@
             z-index: 100;
             padding: 48px 0 0;
             box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            background-color: #f8f9fa;
         }
+
         .sidebar-sticky {
             position: relative;
             top: 0;
@@ -24,64 +27,97 @@
             overflow-x: hidden;
             overflow-y: auto;
         }
+
         .main-content {
             margin-left: 240px;
             padding: 20px;
+        }
+
+        .nav-link.active {
+            background-color: #0d6efd;
+            color: white !important;
         }
     </style>
 </head>
 <body>
     <!-- Top navbar -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="@Url.Action("Index", "Admin")">Admin Panel</a>
-        <div class="navbar-nav ml-auto">
-            <span class="navbar-text text-white">
-                Xin chào, @Context.Session.GetString("UserName")
-            </span>
-            <a class="nav-link text-white" href="@Url.Action("DangXuat", "TaiKhoan")">Đăng xuất</a>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Admin")">
+                <i class="fas fa-cog"></i> Admin Panel - FastFood Store
+            </a>
+            <div class="navbar-nav ms-auto">
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user"></i> @Context.Session.GetString("UserName")
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" asp-controller="SanPham" asp-action="Index">
+                                <i class="fas fa-store"></i> Xem website
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" asp-controller="TaiKhoan" asp-action="DangXuat">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
 
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="@Url.Action("Index", "Admin")">
-                                Dashboard
+                            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" && ViewContext.RouteData.Values["controller"]?.ToString() == "Admin" ? "active" : "")"
+                               href="@Url.Action("Index", "Admin")">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "AdminSanPham")">
-                                Quản lý sản phẩm
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AdminSanPham" ? "active" : "")"
+                               href="@Url.Action("Index", "AdminSanPham")">
+                                <i class="fas fa-utensils"></i> Quản lý sản phẩm
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "AdminDonHang")">
-                                Quản lý đơn hàng
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AdminDonHang" ? "active" : "")"
+                               href="@Url.Action("Index", "AdminDonHang")">
+                                <i class="fas fa-receipt"></i> Quản lý đơn hàng
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "")">
-                                Quản lý khách hàng
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AdminTaiKhoan" ? "active" : "")"
+                               href="@Url.Action("Index", "AdminTaiKhoan")">
+                                <i class="fas fa-users"></i> Quản lý tài khoản
                             </a>
                         </li>
-                        
                     </ul>
                 </div>
             </nav>
 
             <!-- Main content -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 main-content">
+            <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 @if (TempData["SuccessMessage"] != null)
                 {
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        @TempData["SuccessMessage"]
-                        <button type="button" class="close" data-dismiss="alert">
-                            <span>&times;</span>
-                        </button>
+                        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                }
+
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-circle"></i> @TempData["ErrorMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 }
 

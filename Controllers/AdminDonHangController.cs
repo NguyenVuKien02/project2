@@ -16,7 +16,6 @@ namespace Project2.Controllers
         private bool IsAdmin()
         {
             var userRole = HttpContext.Session.GetString("UserRole");
-            // Sửa: Kiểm tra case insensitive
             return string.Equals(userRole, "admin", StringComparison.OrdinalIgnoreCase);
         }
 

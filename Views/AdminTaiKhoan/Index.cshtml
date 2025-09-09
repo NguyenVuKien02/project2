@@ -1,0 +1,81 @@
+﻿@model List<TaiKhoan>
+@{
+    ViewData["Title"] = "Quản lý tài khoản";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Quản lý tài khoản</h2>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Quyền</th>
+                <th>Ngày đăng ký</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IDTaiKhoan</td>
+                    <td>@item.FullName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>@Html.Raw(item.Address?.Length > 30 ? item.Address.Substring(0, 30) + "..." : item.Address)</td>
+                    <td>
+                        <span class="badge @(item.Role?.ToLower() == "admin" ? "bg-danger" : "bg-primary")">
+                            @item.Role
+                        </span>
+                    </td>
+                    <td>@item.NgayDangKi?.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a href="@Url.Action("Details", new { id = item.IDTaiKhoan })"
+                           class="btn btn-info btn-sm">Chi tiết</a>
+
+                        @if (item.Role?.ToLower() != "admin")
+                        {
+                            <form asp-action="UpdateRole" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@item.IDTaiKhoan" />
+                                <select name="role" class="form-select form-select-sm d-inline" style="width: auto;"
+                                        onchange="this.form.submit()">
+                                    <option value="customer" @(item.Role?.ToLower() == "customer" ? "selected" : "")>Customer</option>
+                                    <option value="admin" @(item.Role?.ToLower() == "admin" ? "selected" : "")>Admin</option>
+                                </select>
+                            </form>
+
+                            <button type="button" class="btn btn-danger btn-sm"
+                                    onclick="confirmDelete(@item.IDTaiKhoan, '@item.FullName')">
+                                Xóa
+                            </button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Form xóa ẩn -->
+<form id="deleteForm" asp-action="Delete" method="post" style="display: none;">
+    <input type="hidden" id="deleteId" name="id" />
+</form>
+
+@section Scripts {
+    <script>
+        function confirmDelete(id, name) {
+            if (confirm(`Bạn có chắc muốn xóa tài khoản "${name}"?`)) {
+                document.getElementById('deleteId').value = id;
+                document.getElementById('deleteForm').submit();
+            }
+        }
+    </script>
+}

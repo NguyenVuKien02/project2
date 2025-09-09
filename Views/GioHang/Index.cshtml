@@ -1,0 +1,129 @@
+﻿@model List<GioHang>
+@{
+    ViewData["Title"] = "Giỏ hàng của tôi";
+}
+
+<h2>Giỏ hàng của tôi</h2>
+
+@if (Model.Any())
+{
+    <div class="row">
+        <div class="col-md-8">
+            @foreach (var item in Model)
+            {
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <img src="~/images/@item.IdsanPhamNavigation.AnhSanPham"
+                                 class="img-fluid rounded-start"
+                                 alt="@item.IdsanPhamNavigation.TenSanPham"
+                                 style="height: 120px; object-fit: cover;"
+                                 onerror="this.src='~/images/default-food.jpg'">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 class="card-title">@item.IdsanPhamNavigation.TenSanPham</h5>
+                                        <p class="text-muted">@item.IdsanPhamNavigation.GiaSanPham.ToString("N0") VNĐ</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Số lượng:</label>
+                                        <input type="number" class="form-control quantity-input"
+                                               value="@item.SoLuongTrongGio"
+                                               min="1" max="10"
+                                               data-id="@item.IdGioHang">
+                                    </div>
+                                    <div class="col-md-3 d-flex align-items-center">
+                                        <div>
+                                            <div class="fw-bold">@((item.IdsanPhamNavigation.GiaSanPham * item.SoLuongTrongGio).ToString("N0")) VNĐ</div>
+                                            <button class="btn btn-sm btn-outline-danger mt-2 remove-item"
+                                                    data-id="@item.IdGioHang">
+                                                <i class="fas fa-trash"></i> Xóa
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Tóm tắt đơn hàng</h5>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>Tạm tính:</span>
+                        <span id="tamTinh">@ViewBag.TongTien.ToString("N0") VNĐ</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Phí giao hàng:</span>
+                        <span>Miễn phí</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold">
+                        <span>Tổng cộng:</span>
+                        <span class="text-danger" id="tongCong">@ViewBag.TongTien.ToString("N0") VNĐ</span>
+                    </div>
+
+                    <div class="d-grid mt-3">
+                        <a href="@Url.Action("ThanhToan")" class="btn btn-primary">
+                            <i class="fas fa-credit-card"></i> Thanh toán
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center py-5">
+        <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+        <h4>Giỏ hàng trống</h4>
+        <p class="text-muted">Hãy thêm một số sản phẩm vào giỏ hàng của bạn</p>
+        <a href="@Url.Action("Index", "SanPham")" class="btn btn-primary">
+            <i class="fas fa-utensils"></i> Tiếp tục mua sắm
+        </a>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        // Cập nhật số lượng
+        $('.quantity-input').on('change', function() {
+            const id = $(this).data('id');
+            const soLuong = $(this).val();
+
+            $.post('@Url.Action("CapNhatSoLuong")', {
+                id: id,
+                soLuong: soLuong
+            })
+            .done(function(data) {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert(data.message || 'Có lỗi xảy ra');
+                }
+            });
+        });
+
+        // Xóa khỏi giỏ hàng
+        $('.remove-item').on('click', function() {
+            if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                const id = $(this).data('id');
+
+                $.post('@Url.Action("XoaKhoiGio")', { id: id })
+                .done(function(data) {
+                    if (data.success) {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    </script>
+}

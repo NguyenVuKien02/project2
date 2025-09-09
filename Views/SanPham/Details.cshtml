@@ -1,0 +1,182 @@
+﻿@model SanPham
+@{
+    ViewData["Title"] = Model.TenSanPham;
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="~/images/@Model.AnhSanPham" class="img-fluid rounded" alt="@Model.TenSanPham"
+             onerror="this.src='~/images/default-food.jpg'" />
+    </div>
+
+    <div class="col-md-6">
+        <h2>@Model.TenSanPham</h2>
+        <p class="text-muted">@Model.IddanhMucNavigation?.TenDanhMuc</p>
+        <p>@Model.MoTaSanPham</p>
+
+        <div class="price mb-3">
+            <span class="h3 text-danger">@Model.GiaSanPham.ToString("N0") VNĐ</span>
+        </div>
+
+        <div class="mb-3">
+            <span class="badge bg-success">@Model.Status</span>
+        </div>
+
+        <!-- Form thêm giỏ hàng -->
+        <form asp-controller="SanPham" asp-action="ThemGioHang" method="post">
+            <input type="hidden" name="sanPhamId" value="@Model.IdsanPham" />
+            <div class="row mb-3">
+                <div class="col-4">
+                    <label>Số lượng:</label>
+                    <input type="number" name="soLuong" value="1" min="1" max="10" class="form-control" />
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex">
+                <button type="submit" class="btn btn-primary me-md-2">
+                    <i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
+                </button>
+                <a href="@Url.Action("Index", "GioHang")" class="btn btn-outline-secondary">
+                    <i class="fas fa-shopping-cart"></i> Xem giỏ hàng
+                </a>
+            </div>
+        </form>
+
+        <hr class="mt-4">
+        <a href="@Url.Action("Index")" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+        </a>
+    </div>
+</div>
+
+<!-- Đánh giá sản phẩm -->
+<div class="row mt-5">
+    <div class="col-12">
+        <h4>Đánh giá từ khách hàng</h4>
+
+        @if (ViewBag.DaMuaSanPham == true)
+        {
+            <!-- Form đánh giá (chỉ hiện nếu đã mua) -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h6>Để lại đánh giá của bạn:</h6>
+                    <form id="danhGiaForm">
+                        <input type="hidden" id="sanPhamId" value="@Model.IdsanPham" />
+
+                        <div class="mb-3">
+                            <label>Đánh giá:</label>
+                            <div class="star-rating">
+                                @for (int i = 5; i >= 1; i--)
+                                {
+                                    <input type="radio" id="star@(i)" name="rating" value="@i" />
+                                    <label for="star@(i)" title="@i sao">★</label>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Nhận xét:</label>
+                            <textarea id="noiDung" class="form-control" rows="3" placeholder="Chia sẻ trải nghiệm của bạn..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Gửi đánh giá</button>
+                    </form>
+                </div>
+            </div>
+        }
+
+        <!-- Hiển thị đánh giá -->
+        @foreach (var danhGia in Model.DanhGia.OrderByDescending(d => d.NgayDanhGia))
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <h6>@danhGia.IdtaiKhoanNavigation?.FullName</h6>
+                        <small class="text-muted">@danhGia.NgayDanhGia?.ToString("dd/MM/yyyy HH:mm")</small>
+                    </div>
+
+                    <div class="mb-2">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            @if (i <= danhGia.Rating)
+                            {
+                                <span class="text-warning">★</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">☆</span>
+                            }
+                        }
+                        <span class="ms-2">(@danhGia.Rating/5)</span>
+                    </div>
+
+                    <p>@danhGia.NoiDungDanhGia</p>
+                </div>
+            </div>
+        }
+
+        @if (!Model.DanhGia.Any())
+        {
+            <p class="text-muted">Chưa có đánh giá nào cho sản phẩm này.</p>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-block;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            color: #ddd;
+            font-size: 25px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffc107;
+        }
+    </style>
+
+    <script>
+        document.getElementById('danhGiaForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const sanPhamId = document.getElementById('sanPhamId').value;
+            const rating = document.querySelector('input[name="rating"]:checked')?.value;
+            const noiDung = document.getElementById('noiDung').value;
+
+            if (!rating) {
+                alert('Vui lòng chọn số sao đánh giá!');
+                return;
+            }
+
+            fetch('@Url.Action("ThemDanhGia", "DanhGia")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                body: `sanPhamId=${sanPhamId}&rating=${rating}&noiDung=${encodeURIComponent(noiDung)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Đánh giá thành công!');
+                    location.reload();
+                } else {
+                    alert(data.message || 'Có lỗi xảy ra!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra!');
+            });
+        });
+    </script>
+}

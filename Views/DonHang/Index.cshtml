@@ -1,0 +1,76 @@
+﻿@model List<DonHang>
+@{
+    ViewData["Title"] = "Đơn hàng của tôi";
+}
+
+<h2>Đơn hàng của tôi</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var donHang in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <span>Đơn hàng #@donHang.IddonHang</span>
+                        <span class="badge @(GetStatusClass(donHang.Status))">@donHang.Status</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Ngày đặt:</strong> @donHang.NgayTaoDonHang?.ToString("dd/MM/yyyy HH:mm")</p>
+                        <p><strong>Tổng tiền:</strong> <span class="text-danger">@donHang.TongTien?.ToString("N0") VNĐ</span></p>
+                        <p><strong>Địa chỉ giao hàng:</strong> @donHang.DiaChiGiaoHang</p>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="@Url.Action("Details", new { id = donHang.IddonHang })"
+                               class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-eye"></i> Chi tiết
+                            </a>
+
+                            @if (donHang.Status == "Chờ xác nhận")
+                            {
+                                <small class="text-muted">Đang chờ xác nhận...</small>
+                            }
+                            else if (donHang.Status == "Hoàn thành")
+                            {
+                                <small class="text-success">✓ Đã hoàn thành</small>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="text-center py-5">
+        <i class="fas fa-receipt fa-3x text-muted mb-3"></i>
+        <h4>Chưa có đơn hàng nào</h4>
+        <p class="text-muted">Bạn chưa có đơn hàng nào. Hãy đặt hàng ngay!</p>
+        <a href="@Url.Action("Index", "SanPham")" class="btn btn-primary">
+            <i class="fas fa-utensils"></i> Đặt hàng ngay
+        </a>
+    </div>
+}
+
+@functions {
+    public string GetStatusClass(string status)
+    {
+        return status switch
+        {
+            "Chờ xác nhận" => "bg-warning",
+            "Hoàn thành" => "bg-success",
+            "Đã hủy" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}
