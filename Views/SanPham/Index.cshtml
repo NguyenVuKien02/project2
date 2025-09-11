@@ -3,10 +3,118 @@
     ViewData["Title"] = "Danh sách sản phẩm";
 }
 
+<style>
+    /* Toàn bộ background ấm áp */
+    body {
+        background: linear-gradient(135deg, #fff4e6, #ffe8d6);
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    /* Card sản phẩm */
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        background: #fffaf5;
+    }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    /* Header danh mục */
+    .card-header {
+        background: linear-gradient(90deg, #ff7b54, #ffb26b);
+        color: white;
+        font-weight: bold;
+        border-radius: 15px 15px 0 0 !important;
+    }
+
+    /* Link danh mục */
+    .list-unstyled li a {
+        text-decoration: none;
+        color: #444;
+        transition: color 0.2s ease;
+    }
+
+        .list-unstyled li a:hover {
+            color: #ff5722;
+        }
+
+    .fw-bold {
+        color: #ff5722 !important;
+    }
+
+    /* Tiêu đề sản phẩm */
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* Giá sản phẩm */
+    .text-danger {
+        color: #e63946 !important;
+        font-weight: bold;
+    }
+
+    /* Nút */
+    .btn-primary {
+        background: linear-gradient(90deg, #ff7b54, #ffb26b);
+        border: none;
+        transition: background 0.3s ease, transform 0.2s;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #ff5722, #ff9a76);
+            transform: scale(1.05);
+        }
+
+    .btn-outline-primary {
+        border-color: #ff7b54;
+        color: #ff7b54;
+    }
+
+        .btn-outline-primary:hover {
+            background: #ff7b54;
+            color: white;
+        }
+
+    /* Pagination */
+    .pagination .page-link {
+        color: #ff7b54;
+        border-radius: 8px;
+        margin: 0 3px;
+        transition: all 0.2s;
+    }
+
+    .pagination .page-item.active .page-link {
+        background: #ff7b54;
+        border-color: #ff7b54;
+        color: white;
+    }
+
+    .pagination .page-link:hover {
+        background: #ffe0cc;
+        color: #d35400;
+    }
+</style>
+
+
+
+
+
+
+
+
+
 <div class="row">
     <div class="col-md-3">
         <div class="card">
             <div class="card-header">
+
                 <h5>Danh mục sản phẩm</h5>
             </div>
             <div class="card-body">
@@ -46,7 +154,7 @@
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-md-6 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <img src="~/images/@item.AnhSanPham" class="card-img-top" alt="@item.TenSanPham"
                              style="height: 200px; object-fit: cover;"
@@ -129,12 +237,6 @@
             </nav>
         }
 
-        <div class="text-center mt-3">
-            <small class="text-muted">
-                Hiển thị @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1) -
-                @(Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.TotalItems))
-                trong tổng số @ViewBag.TotalItems sản phẩm
-            </small>
-        </div>
+        
     </div>
 </div>

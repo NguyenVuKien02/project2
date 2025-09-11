@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project2.Models;
 using System.Diagnostics;
 
@@ -7,15 +8,34 @@ namespace Project2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly WebBanDoAnNhanhContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, WebBanDoAnNhanhContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            try
+            {
+                // Lấy 6 sản phẩm mới nhất và còn hàng để hiển thị trên trang chủ
+                var sanPhamNoiBat = await _context.SanPhams
+                    .Include(s => s.IddanhMucNavigation)
+                    .Where(s => s.Status == "Còn hàng")
+                    .OrderByDescending(s => s.NgayTaoSanPham)
+                    .Take(6)
+                    .ToListAsync();
+
+                return View(sanPhamNoiBat);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi tải trang chủ");
+                // Trả về view với danh sách rỗng nếu có lỗi
+                return View(new List<SanPham>());
+            }
         }
 
         public IActionResult Privacy()

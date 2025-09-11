@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Project2.bundle.scp.css"
     },
     {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
       "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

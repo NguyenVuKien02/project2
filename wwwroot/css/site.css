@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -19,4 +19,119 @@ html {
 
 body {
   margin-bottom: 60px;
+
 }
+
+
+
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+    background: #ffffff; /* màu nền */
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin: 15px auto;
+    max-width: 1200px; /* gọn lại, không full width */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ff4d4d !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+    .navbar-brand i {
+        color: #FF7A00; /* icon màu cam cho hợp */
+    }
+
+    .navbar-brand:hover {
+        transform: scale(1.05);
+    }
+
+.navbar-nav .nav-item {
+    position: relative;
+    margin: 0 8px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #333 !important;
+    padding: 8px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+    /* Hiệu ứng hover */
+    .navbar-nav .nav-link:hover {
+        color: #fff !important;
+        background: linear-gradient(135deg, #FF914D, #FF4D4D);
+        box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+    }
+
+/* ==================== DROPDOWN ==================== */
+.dropdown-menu {
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-item {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+    .dropdown-item:hover {
+        background: #ff4d4d;
+        color: #fff;
+    }
+
+/* ==================== ANIMATION ==================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.admin-footer {
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+    padding: 25px 20px;
+    margin-top: 40px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+    .admin-footer h5,
+    .admin-footer h6 {
+        color: #0d6efd;
+    }
+
+    .admin-footer a {
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+    }
+
+        .admin-footer a:hover {
+            color: #0d6efd;
+            text-decoration: underline;
+        }
+
+    .admin-footer hr {
+        margin: 20px 0;
+    }

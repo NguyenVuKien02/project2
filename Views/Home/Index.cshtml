@@ -1,8 +1,292 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<SanPham>
+@{
+    ViewData["Title"] = "FastFood Store - Trang chủ";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    :root {
+        --primary: #FF7A00; /* Cam đất */
+        --secondary: #FF4D4D; /* Đỏ tươi */
+        --accent: #FFD93D; /* Vàng */
+        --background: #FFF8F0; /* Nền kem */
+        --dark: #2E2E2E; /* Xám đậm */
+    }
+
+    body {
+        background-color: var(--background);
+        font-family: 'Segoe UI', sans-serif;
+        color: var(--dark);
+    }
+
+    /* Hero Banner */
+    .bg-primary {
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .btn-light {
+        color: var(--primary);
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .btn-light:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+
+    /* Features */
+    .card {
+        border-radius: 12px;
+        transition: 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .card i {
+            transition: 0.3s;
+        }
+
+        .card:hover i {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+    /* Product Cards */
+    .card-title {
+        font-weight: bold;
+        color: var(--dark);
+    }
+
+    .card .btn-outline-primary {
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+        .card .btn-outline-primary:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+    .card .btn-primary {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border: none;
+        transition: 0.3s;
+    }
+
+        .card .btn-primary:hover {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            transform: scale(1.05);
+        }
+
+    /* CTA Section */
+    .bg-light {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+        .bg-light h3 {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+    .btn-success {
+        background: var(--secondary);
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-success:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+    .btn-outline-primary {
+        border-color: var(--primary);
+        color: var(--primary);
+        transition: 0.3s;
+    }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+    /* Statistics */
+    .row .p-4 {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: 0.3s;
+    }
+
+        .row .p-4:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+</style>
+
+<!-- Hero Banner -->
+<div class="bg-primary text-white py-5 mb-5 rounded">
+    <div class="container text-center">
+        <h1 class="display-4 mb-3">
+            <i class="fas fa-utensils"></i> FastFood Store
+        </h1>
+        <p class="lead mb-4">Thức ăn nhanh ngon, sạch, chất lượng - Giao hàng tận nơi</p>
+        <a href="@Url.Action("Index", "SanPham")" class="btn btn-light btn-lg">
+            <i class="fas fa-shopping-cart"></i> Đặt hàng ngay
+        </a>
+    </div>
+</div>
+
+<!-- Features -->
+<div class="row mb-5">
+    <div class="col-md-4 text-center mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <i class="fas fa-shipping-fast fa-3x text-primary mb-3"></i>
+                <h5>Giao hàng nhanh</h5>
+                <p class="text-muted">Giao hàng trong 30 phút, đảm bảo thức ăn còn nóng</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <i class="fas fa-medal fa-3x text-success mb-3"></i>
+                <h5>Chất lượng cao</h5>
+                <p class="text-muted">Nguyên liệu tươi ngon, quy trình chế biến an toàn</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <i class="fas fa-tags fa-3x text-warning mb-3"></i>
+                <h5>Giá cả hợp lý</h5>
+                <p class="text-muted">Giá cả phải chăng, nhiều chương trình ưu đãi</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sản phẩm nổi bật -->
+@if (Model?.Any() == true)
+{
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2><i class="fas fa-fire text-danger"></i> Sản phẩm nổi bật</h2>
+            <a href="@Url.Action("Index", "SanPham")" class="btn btn-outline-primary">
+                Xem tất cả <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model.Take(6))
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="~/images/@item.AnhSanPham" class="card-img-top" alt="@item.TenSanPham"
+                                 style="height: 200px; object-fit: cover;"
+                                 onerror="this.src='~/images/default-food.jpg'">
+
+                            @if (item.Status == "Còn hàng")
+                            {
+                                <span class="badge bg-success position-absolute top-0 end-0 m-2">Còn hàng</span>
+                            }
+                        </div>
+
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@item.TenSanPham</h5>
+                            <p class="card-text text-muted flex-grow-1">
+                                @(item.MoTaSanPham?.Length > 80 ? item.MoTaSanPham.Substring(0, 80) + "..." : item.MoTaSanPham)
+                            </p>
+
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <h5 class="text-danger mb-0">@item.GiaSanPham.ToString("N0") VNĐ</h5>
+                                <div class="btn-group">
+                                    <a href="@Url.Action("Details", "SanPham", new { id = item.IdsanPham })"
+                                       class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+
+                                    @if (item.Status == "Còn hàng")
+                                    {
+                                        <form asp-controller="SanPham" asp-action="ThemGioHang" method="post" class="d-inline">
+                                            <input type="hidden" name="sanPhamId" value="@item.IdsanPham" />
+                                            <input type="hidden" name="soLuong" value="1" />
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<!-- Call to Action -->
+<div class="bg-light py-5 rounded text-center">
+    <div class="container">
+        <h3 class="mb-3">Đăng ký và đăng nhập ngay tại đây</h3>
+
+        @if (string.IsNullOrEmpty(Context.Session.GetString("UserId")))
+        {
+            <a href="@Url.Action("DangKi", "TaiKhoan")" class="btn btn-success btn-lg me-3">
+                <i class="fas fa-user-plus"></i> Đăng ký ngay
+            </a>
+            <a href="@Url.Action("DangNhap", "TaiKhoan")" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-sign-in-alt"></i> Đăng nhập
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("Index", "SanPham")" class="btn btn-primary btn-lg">
+                <i class="fas fa-utensils"></i> Bắt đầu đặt hàng
+            </a>
+        }
+    </div>
+</div>
+
+<!-- Statistics -->
+<div class="row mt-5 text-center">
+    <div class="col-md-3 mb-4">
+        <div class="p-4">
+            <i class="fas fa-users fa-2x text-primary mb-2"></i>
+            <h4>1000+</h4>
+            <p class="text-muted">Khách hàng hài lòng</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="p-4">
+            <i class="fas fa-utensils fa-2x text-success mb-2"></i>
+            <h4>50+</h4>
+            <p class="text-muted">Món ăn đa dạng</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="p-4">
+            <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+            <h4>24/7</h4>
+            <p class="text-muted">Phục vụ không ngừng</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="p-4">
+            <i class="fas fa-star fa-2x text-info mb-2"></i>
+            <h4>4.9/5</h4>
+            <p class="text-muted">Đánh giá từ khách hàng</p>
+        </div>
+    </div>
 </div>

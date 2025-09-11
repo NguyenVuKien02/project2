@@ -1,0 +1,105 @@
+﻿@model SanPham
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-danger">Xóa sản phẩm</h2>
+    <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="alert alert-warning">
+            <h4><i class="fas fa-exclamation-triangle"></i> Cảnh báo!</h4>
+            <p>Bạn có chắc chắn muốn xóa sản phẩm này? Hành động này không thể hoàn tác.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h5><i class="fas fa-trash"></i> Xác nhận xóa sản phẩm</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="~/images/@Model.AnhSanPham" alt="@Model.TenSanPham"
+                             class="img-fluid rounded"
+                             onerror="this.src='~/images/default-food.jpg'" />
+                    </div>
+                    <div class="col-md-8">
+                        <dl class="row">
+                            <dt class="col-sm-4">Tên sản phẩm:</dt>
+                            <dd class="col-sm-8">@Model.TenSanPham</dd>
+
+                            <dt class="col-sm-4">Danh mục:</dt>
+                            <dd class="col-sm-8">@Model.IddanhMucNavigation?.TenDanhMuc</dd>
+
+                            <dt class="col-sm-4">Giá:</dt>
+                            <dd class="col-sm-8 text-danger fw-bold">@Model.GiaSanPham.ToString("N0") VNĐ</dd>
+
+                            <dt class="col-sm-4">Trạng thái:</dt>
+                            <dd class="col-sm-8">
+                                <span class="badge @(Model.Status == "Còn hàng" ? "bg-success" : "bg-danger")">
+                                    @Model.Status
+                                </span>
+                            </dd>
+
+                            <dt class="col-sm-4">Ngày tạo:</dt>
+                            <dd class="col-sm-8">@Model.NgayTaoSanPham?.ToString("dd/MM/yyyy HH:mm")</dd>
+
+                            <dt class="col-sm-4">Mô tả:</dt>
+                            <dd class="col-sm-8">@Model.MoTaSanPham</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="d-flex justify-content-between">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Hủy bỏ
+                    </a>
+
+                    <form asp-action="Delete" method="post" class="d-inline">
+                        <input type="hidden" asp-for="IdsanPham" />
+                        <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Bạn có CHẮC CHẮN muốn xóa sản phẩm này?')">
+                            <i class="fas fa-trash"></i> Xác nhận xóa
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h6><i class="fas fa-info-circle"></i> Lưu ý quan trọng</h6>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    <small>
+                        <strong>Sau khi xóa:</strong><br>
+                        • Sản phẩm sẽ bị xóa vĩnh viễn<br>
+                        • Không thể khôi phục lại<br>
+                        • Có thể ảnh hưởng đến đơn hàng cũ<br>
+                        • Dữ liệu liên quan sẽ bị mất
+                    </small>
+                </div>
+
+                <div class="d-grid">
+                    <a href="@Url.Action("Edit", new { id = Model.IdsanPham })" class="btn btn-warning btn-sm mb-2">
+                        <i class="fas fa-edit"></i> Sửa thay vì xóa
+                    </a>
+                    <a href="@Url.Action("Details", new { id = Model.IdsanPham })" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i> Xem chi tiết
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,7 +17,7 @@ namespace Project2.Controllers
         // GET: Danh sách sản phẩm với phân trang
         public async Task<IActionResult> Index(int? page, int? danhMucId)
         {
-            int pageSize = 5;
+            int pageSize = 9;
             int pageNumber = page ?? 1;
 
             var sanPhamsQuery = _context.SanPhams
@@ -29,6 +29,8 @@ namespace Project2.Controllers
             {
                 sanPhamsQuery = sanPhamsQuery.Where(s => s.IddanhMuc == danhMucId);
             }
+
+            
 
             var sanPhams = await sanPhamsQuery
                 .OrderByDescending(s => s.NgayTaoSanPham)

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KRcQt6f5e/zUsPjCca9rtUj/pTlks89w62Yckq8dkrU=",
+  "Hash": "aisvOmnrV9on45wdZenEmfb19sW9NNziQzA55yPopJU=",
   "Source": "Project2",
   "BasePath": "_content/Project2",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "E:\\web bán đồ ăn\\Project2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Project2.bundle.scp.css"
+    },
+    {
+      "Identity": "E:\\web bán đồ ăn\\Project2\\wwwroot\\css\\admin.css",
+      "SourceId": "Project2",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\web bán đồ ăn\\Project2\\wwwroot\\",
+      "BasePath": "_content/Project2",
+      "RelativePath": "css/admin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin.css"
     },
     {
       "Identity": "E:\\web bán đồ ăn\\Project2\\wwwroot\\css\\site.css",

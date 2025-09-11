@@ -89,11 +89,47 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - FastFood Store - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Footer -->
+    <footer class="admin-footer mt-5">
+        <div class="container-fluid">
+            <div class="row text-center text-md-start">
+                <!-- Logo & giới thiệu -->
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold text-primary">
+                        <i class="fas fa-utensils"></i> FastFood Store
+                    </h5>
+                    <p class="text-muted small">
+                        Hệ thống quản lý bán đồ ăn nhanh hiện đại, dễ sử dụng và hiệu quả.
+                    </p>
+                </div>
+
+                <!-- Liên kết nhanh -->
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">Liên kết nhanh</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="@Url.Action("Index", "Admin")">Dashboard</a></li>
+                        <li><a href="@Url.Action("Index", "AdminSanPham")">Quản lý sản phẩm</a></li>
+                        <li><a href="@Url.Action("Index", "AdminDonHang")">Quản lý đơn hàng</a></li>
+                        <li><a href="@Url.Action("Index", "AdminTaiKhoan")">Quản lý tài khoản</a></li>
+                    </ul>
+                </div>
+
+                <!-- Liên hệ -->
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">Liên hệ</h6>
+                    <p class="text-muted small mb-1"><i class="fas fa-envelope"></i> support@fastfoodstore.com</p>
+                    <p class="text-muted small mb-1"><i class="fas fa-phone"></i> +84 123 456 789</p>
+                    <p class="text-muted small"><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</p>
+                </div>
+            </div>
+
+            <hr>
+            <div class="text-center small text-muted">
+                © @DateTime.Now.Year FastFood Store. All rights reserved.
+            </div>
         </div>
     </footer>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

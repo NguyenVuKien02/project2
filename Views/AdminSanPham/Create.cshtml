@@ -1,0 +1,101 @@
+﻿@model SanPham
+@{
+    ViewData["Title"] = "Thêm sản phẩm mới";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Thêm sản phẩm mới</h2>
+    <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="TenSanPham" class="form-label">Tên sản phẩm</label>
+                                <input asp-for="TenSanPham" class="form-control" placeholder="Nhập tên sản phẩm" />
+                                <span asp-validation-for="TenSanPham" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="IddanhMuc" class="form-label">Danh mục</label>
+                                <select asp-for="IddanhMuc" class="form-select">
+                                    <option value="">-- Chọn danh mục --</option>
+                                    @foreach (var dm in ViewBag.DanhMucs as List<DanhMuc>)
+                                    {
+                                        <option value="@dm.IddanhMuc">@dm.TenDanhMuc</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="IddanhMuc" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="GiaSanPham" class="form-label">Giá sản phẩm (VNĐ)</label>
+                                <input asp-for="GiaSanPham" type="number" class="form-control" step="1000" min="0" placeholder="0" />
+                                <span asp-validation-for="GiaSanPham" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="AnhSanPham" class="form-label">Hình ảnh</label>
+                                <input asp-for="AnhSanPham" class="form-control" placeholder="Tên file ảnh (vd: pizza.jpg)" />
+                                <span asp-validation-for="AnhSanPham" class="text-danger"></span>
+                                <small class="text-muted">Đặt file ảnh trong thư mục wwwroot/images/</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="MoTaSanPham" class="form-label">Mô tả sản phẩm</label>
+                        <textarea asp-for="MoTaSanPham" class="form-control" rows="4" placeholder="Nhập mô tả chi tiết về sản phẩm..."></textarea>
+                        <span asp-validation-for="MoTaSanPham" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="@Url.Action("Index")" class="btn btn-secondary me-md-2">Hủy</a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-save"></i> Lưu sản phẩm
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h6><i class="fas fa-info-circle"></i> Hướng dẫn</h6>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check text-success"></i> Tên sản phẩm phải rõ ràng, dễ hiểu</li>
+                    <li class="mb-2"><i class="fas fa-check text-success"></i> Chọn đúng danh mục sản phẩm</li>
+                    <li class="mb-2"><i class="fas fa-check text-success"></i> Giá sản phẩm nhập bằng số</li>
+                    <li class="mb-2"><i class="fas fa-check text-success"></i> File ảnh để trong thư mục images/</li>
+                    <li class="mb-2"><i class="fas fa-check text-success"></i> Mô tả chi tiết về sản phẩm</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
