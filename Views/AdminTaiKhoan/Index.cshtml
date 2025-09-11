@@ -47,8 +47,9 @@
                                 <input type="hidden" name="id" value="@item.IDTaiKhoan" />
                                 <select name="role" class="form-select form-select-sm d-inline" style="width: auto;"
                                         onchange="this.form.submit()">
-                                    <option value="customer" @(item.Role?.ToLower() == "customer" ? "selected" : "")>Customer</option>
-                                    <option value="admin" @(item.Role?.ToLower() == "admin" ? "selected" : "")>Admin</option>
+                                    <option value="customer" selected="@(item.Role?.ToLower() == "customer")">Customer</option>
+                                    <option value="admin" selected="@(item.Role?.ToLower() == "admin")">Admin</option>
+
                                 </select>
                             </form>
 

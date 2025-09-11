@@ -13,6 +13,46 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\banh_flan.jpg",
+      "PackagePath": "staticwebassets\\images\\banh_flan.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\bigmac.jpg",
+      "PackagePath": "staticwebassets\\images\\bigmac.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\cheeseburger.jpg",
+      "PackagePath": "staticwebassets\\images\\cheeseburger.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\coca_cola.jpg",
+      "PackagePath": "staticwebassets\\images\\coca_cola.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\ga_nuong_mat_ong.jpg",
+      "PackagePath": "staticwebassets\\images\\ga_nuong_mat_ong.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\ga_ran_cay.jpg",
+      "PackagePath": "staticwebassets\\images\\ga_ran_cay.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\kem_vanilla.jpg",
+      "PackagePath": "staticwebassets\\images\\kem_vanilla.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\pizza_margherita.jpg",
+      "PackagePath": "staticwebassets\\images\\pizza_margherita.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\pizza_pepperoni.jpg",
+      "PackagePath": "staticwebassets\\images\\pizza_pepperoni.jpg"
+    },
+    {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\tra_dao_cam_sa.jpg",
+      "PackagePath": "staticwebassets\\images\\tra_dao_cam_sa.jpg"
+    },
+    {
       "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
