@@ -125,7 +125,7 @@ namespace Project2.Controllers
                 TempData["ErrorMessage"] = "Có lỗi xảy ra: " + ex.Message;
             }
 
-            return RedirectToAction("Details", new { id = sanPhamId });
+            return RedirectToAction("Index", new { id = sanPhamId });
         }
     }
 }

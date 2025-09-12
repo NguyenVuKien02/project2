@@ -17,7 +17,7 @@ public partial class WebBanDoAnNhanhContext : DbContext
 
     public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
 
-    public virtual DbSet<DanhGia> DanhGias{ get; set; }
+    public virtual DbSet<DanhGia> DanhGias { get; set; }
 
     public virtual DbSet<DanhMuc> DanhMucs { get; set; }
 
@@ -57,6 +57,7 @@ public partial class WebBanDoAnNhanhContext : DbContext
 
         modelBuilder.Entity<DanhGia>(entity =>
         {
+            entity.ToTable("DanhGia"); // 👈 thêm dòng này
             entity.HasKey(e => e.IddanhGia).HasName("PK__DanhGia__C216E48D0CEEC01F");
 
             entity.Property(e => e.IddanhGia).HasColumnName("IDDanhGia");
