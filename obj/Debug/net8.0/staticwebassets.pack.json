@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\images\\kem_vanilla.jpg"
     },
     {
+      "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
       "Id": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\pizza_margherita.jpg",
       "PackagePath": "staticwebassets\\images\\pizza_margherita.jpg"
     },

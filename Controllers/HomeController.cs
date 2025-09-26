@@ -20,7 +20,7 @@ namespace Project2.Controllers
         {
             try
             {
-                // Lấy 6 sản phẩm mới nhất và còn hàng để hiển thị trên trang chủ
+                // Lấy 6 sản phẩm còn hàng để hiển thị trên trang chủ
                 var sanPhamNoiBat = await _context.SanPhams
                     .Include(s => s.IddanhMucNavigation)
                     .Where(s => s.Status == "Còn hàng")
