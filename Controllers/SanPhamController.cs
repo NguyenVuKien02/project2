@@ -15,22 +15,30 @@ namespace Project2.Controllers
         }
 
         // GET: Danh sách sản phẩm với phân trang
-        public async Task<IActionResult> Index(int? page, int? danhMucId)
+        public async Task<IActionResult> Index(int? page, int? danhMucId, string searchString)
         {
             int pageSize = 9;
             int pageNumber = page ?? 1;
+
+            // Lưu giá trị tìm kiếm để hiển thị lại trong form
+            ViewData["CurrentFilter"] = searchString;
+            ViewBag.DanhMucId = danhMucId;
 
             var sanPhamsQuery = _context.SanPhams
                 .Include(s => s.IddanhMucNavigation)
                 .Where(s => s.Status == "Còn hàng");
 
-            // Lọc theo danh mục nếu có
+            // Lọc theo danh mục 
             if (danhMucId.HasValue && danhMucId > 0)
             {
                 sanPhamsQuery = sanPhamsQuery.Where(s => s.IddanhMuc == danhMucId);
             }
 
-            
+            // Tìm kiếm theo tên sản phẩm 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                sanPhamsQuery = sanPhamsQuery.Where(s => s.TenSanPham.Contains(searchString));
+            }
 
             var sanPhams = await sanPhamsQuery
                 .OrderByDescending(s => s.NgayTaoSanPham)
@@ -47,7 +55,6 @@ namespace Project2.Controllers
             ViewBag.TotalPages = (int)Math.Ceiling((double)sanPhams.Count / pageSize);
             ViewBag.TotalItems = sanPhams.Count;
             ViewBag.PageSize = pageSize;
-            ViewBag.DanhMucId = danhMucId;
 
             // Danh sách danh mục cho filter
             ViewBag.DanhMucs = await _context.DanhMucs.ToListAsync();
@@ -127,5 +134,7 @@ namespace Project2.Controllers
 
             return RedirectToAction("Index", new { id = sanPhamId });
         }
+
+       
     }
 }

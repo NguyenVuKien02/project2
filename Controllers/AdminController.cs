@@ -38,7 +38,7 @@ namespace Project2.Controllers
             ViewBag.TongSanPham = _context.SanPhams.Count();
             ViewBag.TongKhachHang = _context.TaiKhoans.Where(t => t.Role == "customer").Count();
             ViewBag.TongDonHang = _context.DonHangs.Count();
-
+       
             return View();
         }
     }

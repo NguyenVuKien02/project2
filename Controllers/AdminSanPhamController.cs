@@ -29,17 +29,37 @@ namespace Project2.Controllers
         }
 
         // GET: Danh sách sản phẩm
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, int? categoryId)
         {
             var redirectResult = CheckAdminAccess();
             if (redirectResult != null) return redirectResult;
 
-            var sanPhams = await _context.SanPhams
-                .Include(s => s.IddanhMucNavigation)
-                .ToListAsync();
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentCategory"] = categoryId;
 
-            return View(sanPhams);
+            var sanPhams = _context.SanPhams
+                .Include(s => s.IddanhMucNavigation)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                sanPhams = sanPhams.Where(s =>
+                    s.TenSanPham.Contains(searchString) ||
+                    s.MoTaSanPham.Contains(searchString) ||
+                    s.IddanhMucNavigation.TenDanhMuc.Contains(searchString));
+            }
+
+            if (categoryId.HasValue && categoryId > 0)
+            {
+                sanPhams = sanPhams.Where(s => s.IddanhMuc == categoryId);
+            }
+
+            // Lấy danh mục để đổ vào dropdown
+            ViewBag.DanhMucs = await _context.DanhMucs.ToListAsync();
+
+            return View(await sanPhams.ToListAsync());
         }
+
 
         // GET: Chi tiết sản phẩm
         public async Task<IActionResult> Details(int? id)
