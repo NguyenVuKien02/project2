@@ -6,9 +6,7 @@
     <title>@ViewData["Title"] - Admin Panel</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-     
 </head>
 <body>
     <!-- Top navbar -->
@@ -19,11 +17,11 @@
             </a>
             <div class="navbar-nav ms-auto">
                 <div class="dropdown">
-                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i> @Context.Session.GetString("UserName")
                     </button>
 
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                         <li>
                             <a class="dropdown-item" asp-controller="SanPham" asp-action="Index">
                                 <i class="fas fa-store"></i> Xem website
@@ -57,6 +55,12 @@
                             <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AdminSanPham" ? "active" : "")"
                                href="@Url.Action("Index", "AdminSanPham")">
                                 <i class="fas fa-utensils"></i> Quản lý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AdminDanhMuc" ? "active" : "")"
+                               href="@Url.Action("Index", "AdminDanhMuc")">
+                                <i class="fas fa-list"></i> Quản lý danh mục
                             </a>
                         </li>
                         <li class="nav-item">

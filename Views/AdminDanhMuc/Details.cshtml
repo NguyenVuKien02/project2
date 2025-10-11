@@ -1,0 +1,131 @@
+﻿@model Project2.Models.DanhMuc
+
+@{
+    ViewData["Title"] = "Chi tiết danh mục";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0"><i class="fas fa-info-circle"></i> Chi tiết danh mục</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <i class="fas fa-hashtag"></i> Mã danh mục:
+                    </dt>
+                    <dd class="col-sm-9">
+                        <span class="badge bg-secondary">@Model.IddanhMuc</span>
+                    </dd>
+
+                    <dt class="col-sm-3">
+                        <i class="fas fa-tag"></i> Tên danh mục:
+                    </dt>
+                    <dd class="col-sm-9">
+                        <h5><strong>@Model.TenDanhMuc</strong></h5>
+                    </dd>
+
+                    <dt class="col-sm-3">
+                        <i class="fas fa-align-left"></i> Mô tả:
+                    </dt>
+                    <dd class="col-sm-9">
+                        @if (!string.IsNullOrEmpty(Model.MoTaDanhMuc))
+                        {
+                            <p>@Model.MoTaDanhMuc</p>
+                        }
+                        else
+                        {
+                            <em class="text-muted">Không có mô tả</em>
+                        }
+                    </dd>
+
+                    @if (Model.NgayTaoDanhMuc.HasValue)
+                    {
+                        <dt class="col-sm-3">
+                            <i class="fas fa-calendar-alt"></i> Ngày tạo:
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Model.NgayTaoDanhMuc.Value.ToString("dd/MM/yyyy HH:mm:ss")
+                        </dd>
+                    }
+
+                    <dt class="col-sm-3">
+                        <i class="fas fa-boxes"></i> Số sản phẩm:
+                    </dt>
+                    <dd class="col-sm-9">
+                        <span class="badge bg-info">@Model.SanPhams.Count sản phẩm</span>
+                    </dd>
+                </dl>
+
+                @if (Model.SanPhams.Any())
+                {
+                    <hr />
+                    <h5><i class="fas fa-utensils"></i> Danh sách sản phẩm trong danh mục</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover mt-3">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 10%">ID</th>
+                                    <th style="width: 30%">Tên sản phẩm</th>
+                                    <th style="width: 20%">Giá</th>
+                                    <th style="width: 20%">Trạng thái</th>
+                                    <th style="width: 20%">Ngày tạo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var sp in Model.SanPhams)
+                                {
+                                    <tr>
+                                        <td>@sp.IdsanPham</td>
+                                        <td>@sp.TenSanPham</td>
+                                        <td>
+                                            <strong class="text-success">@sp.GiaSanPham.ToString("N0") đ</strong>
+                                        </td>
+                                        <td>
+                                            @if (sp.Status == "Còn hàng")
+                                            {
+                                                <span class="badge bg-success">@sp.Status</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">@sp.Status</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (sp.NgayTaoSanPham.HasValue)
+                                            {
+                                                @sp.NgayTaoSanPham.Value.ToString("dd/MM/yyyy")
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-info-circle"></i> Danh mục này chưa có sản phẩm nào.
+                    </div>
+                }
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </a>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model.IddanhMuc" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Sửa
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.IddanhMuc" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Xóa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+﻿@model Project2.Models.DanhMuc
+
+@{
+    ViewData["Title"] = "Xóa danh mục";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Xác nhận xóa danh mục</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <strong>Cảnh báo:</strong> Bạn có chắc chắn muốn xóa danh mục này?
+                </div>
+
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <i class="fas fa-hashtag"></i> Mã danh mục:
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Model.IddanhMuc
+                    </dd>
+
+                    <dt class="col-sm-3">
+                        <i class="fas fa-tag"></i> Tên danh mục:
+                    </dt>
+                    <dd class="col-sm-9">
+                        <strong>@Model.TenDanhMuc</strong>
+                    </dd>
+
+                    <dt class="col-sm-3">
+                        <i class="fas fa-align-left"></i> Mô tả:
+                    </dt>
+                    <dd class="col-sm-9">
+                        @if (!string.IsNullOrEmpty(Model.MoTaDanhMuc))
+                        {
+                            @Model.MoTaDanhMuc
+                        }
+                        else
+                        {
+                            <em class="text-muted">Không có mô tả</em>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-3">
+                        <i class="fas fa-boxes"></i> Số sản phẩm:
+                    </dt>
+                    <dd class="col-sm-9">
+                        <span class="badge bg-info">@Model.SanPhams.Count sản phẩm</span>
+                        @if (Model.SanPhams.Any())
+                        {
+                            <div class="alert alert-danger mt-2">
+                                <i class="fas fa-ban"></i>
+                                <strong>Không thể xóa!</strong> Danh mục này đang có sản phẩm.
+                                Vui lòng xóa hoặc chuyển các sản phẩm sang danh mục khác trước.
+                            </div>
+                        }
+                    </dd>
+
+                    @if (Model.NgayTaoDanhMuc.HasValue)
+                    {
+                        <dt class="col-sm-3">
+                            <i class="fas fa-calendar-alt"></i> Ngày tạo:
+                        </dt>
+                        <dd class="col-sm-9">
+                            @Model.NgayTaoDanhMuc.Value.ToString("dd/MM/yyyy HH:mm:ss")
+                        </dd>
+                    }
+                </dl>
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="IddanhMuc" />
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Quay lại
+                        </a>
+
+                        @if (!Model.SanPhams.Any())
+                        {
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Xác nhận xóa
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-danger" disabled>
+                                <i class="fas fa-ban"></i> Không thể xóa
+                            </button>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

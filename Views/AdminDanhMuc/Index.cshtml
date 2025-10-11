@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Project2.Models.DanhMuc>
+
+@{
+    ViewData["Title"] = "Quản lý danh mục";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-list"></i> Quản lý danh mục</h2>
+    <a asp-action="Create" class="btn btn-success">
+        <i class="fas fa-plus"></i> Thêm danh mục mới
+    </a>
+</div>
+
+<!-- Search form -->
+<form asp-action="Index" method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]"
+                       class="form-control" placeholder="Tìm kiếm danh mục..." />
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Tìm kiếm
+                </button>
+                @if (!string.IsNullOrEmpty(ViewData["CurrentFilter"]?.ToString()))
+                {
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Xóa bộ lọc
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Table -->
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 5%">ID</th>
+                        <th style="width: 20%">Tên danh mục</th>
+                        <th style="width: 35%">Mô tả</th>
+                        <th style="width: 10%">Số sản phẩm</th>
+                        <th style="width: 15%">Ngày tạo</th>
+                        <th style="width: 15%">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IddanhMuc</td>
+                                <td><strong>@item.TenDanhMuc</strong></td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.MoTaDanhMuc))
+                                    {
+                                        @(item.MoTaDanhMuc.Length > 100 ? item.MoTaDanhMuc.Substring(0, 100) + "..." : item.MoTaDanhMuc)
+                                    }
+                                    else
+                                    {
+                                        <em class="text-muted">Chưa có mô tả</em>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">@item.SanPhams.Count sản phẩm</span>
+                                </td>
+                                <td>
+                                    @if (item.NgayTaoDanhMuc.HasValue)
+                                    {
+                                        @item.NgayTaoDanhMuc.Value.ToString("dd/MM/yyyy HH:mm")
+                                    }
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Details" asp-route-id="@item.IddanhMuc"
+                                           class="btn btn-sm btn-info" title="Chi tiết">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@item.IddanhMuc"
+                                           class="btn btn-sm btn-warning" title="Sửa">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.IddanhMuc"
+                                           class="btn btn-sm btn-danger" title="Xóa">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <em class="text-muted">Không tìm thấy danh mục nào</em>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <p class="text-muted">
+        <i class="fas fa-info-circle"></i> Tổng cộng: <strong>@Model.Count()</strong> danh mục
+    </p>
+</div>

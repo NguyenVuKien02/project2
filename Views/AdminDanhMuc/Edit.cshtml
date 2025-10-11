@@ -1,0 +1,74 @@
+﻿@model Project2.Models.DanhMuc
+
+@{
+    ViewData["Title"] = "Sửa danh mục";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="fas fa-edit"></i> Sửa danh mục</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="IddanhMuc" />
+                    <input type="hidden" asp-for="NgayTaoDanhMuc" />
+
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-muted">
+                            <i class="fas fa-hashtag"></i> Mã danh mục
+                        </label>
+                        <input type="text" class="form-control" value="@Model.IddanhMuc" disabled />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TenDanhMuc" class="form-label">
+                            <i class="fas fa-tag"></i> Tên danh mục <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="TenDanhMuc" class="form-control" placeholder="Nhập tên danh mục..." />
+                        <span asp-validation-for="TenDanhMuc" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="MoTaDanhMuc" class="form-label">
+                            <i class="fas fa-align-left"></i> Mô tả danh mục
+                        </label>
+                        <textarea asp-for="MoTaDanhMuc" class="form-control" rows="4"
+                                  placeholder="Nhập mô tả cho danh mục..."></textarea>
+                        <span asp-validation-for="MoTaDanhMuc" class="text-danger"></span>
+                    </div>
+
+                    @if (Model.NgayTaoDanhMuc.HasValue)
+                    {
+                        <div class="mb-3">
+                            <label class="form-label text-muted">
+                                <i class="fas fa-calendar-alt"></i> Ngày tạo
+                            </label>
+                            <input type="text" class="form-control"
+                                   value="@Model.NgayTaoDanhMuc.Value.ToString("dd/MM/yyyy HH:mm:ss")" disabled />
+                        </div>
+                    }
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Quay lại
+                        </a>
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fas fa-save"></i> Cập nhật
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

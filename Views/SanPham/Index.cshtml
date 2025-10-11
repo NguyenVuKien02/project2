@@ -58,6 +58,7 @@
     .text-danger {
         color: #e63946 !important;
         font-weight: bold;
+        white-space: nowrap;
     }
 
     /* Nút */
@@ -82,6 +83,20 @@
             color: white;
         }
 
+    /* Các nút action sản phẩm */
+    .product-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+        .product-actions .btn {
+            border-radius: 8px !important;
+        }
+
+        .product-actions form {
+            margin: 0;
+        }
+
     /* Pagination */
     .pagination .page-link {
         color: #ff7b54;
@@ -102,19 +117,10 @@
     }
 </style>
 
-
-
-
-
-
-
-
-
 <div class="row">
     <div class="col-md-3">
         <div class="card">
             <div class="card-header">
-
                 <h5>Danh mục sản phẩm</h5>
             </div>
             <div class="card-body">
@@ -166,12 +172,12 @@
                             <p class="card-text"><small class="text-muted">@item.IddanhMucNavigation?.TenDanhMuc</small></p>
                             <div class="mt-auto">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 text-danger">@item.GiaSanPham.ToString("N0") VNĐ</span>
-                                    <div class="btn-group">
+                                    <span class="h6 text-danger mb-0">@item.GiaSanPham.ToString("N0") VNĐ</span>
+                                    <div class="product-actions">
                                         <a href="@Url.Action("Details", new { id = item.IdsanPham })"
                                            class="btn btn-outline-primary btn-sm">Chi tiết</a>
 
-                                        <form asp-controller="SanPham" asp-action="ThemGioHang" method="post" class="d-inline">
+                                        <form asp-controller="SanPham" asp-action="ThemGioHang" method="post">
                                             <input type="hidden" name="sanPhamId" value="@item.IdsanPham" />
                                             <input type="hidden" name="soLuong" value="1" />
                                             <button type="submit" class="btn btn-primary btn-sm">
@@ -236,7 +242,5 @@
                 </ul>
             </nav>
         }
-
-        
     </div>
 </div>

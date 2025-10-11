@@ -1,37 +1,32 @@
 ﻿html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
-
+    margin-bottom: 60px;
 }
-
-
-
-
 /* ==================== NAVBAR ==================== */
 .navbar {
-    background: #ffffff; /* màu nền */
-    padding: 10px 20px;
+    background: #ffffff;
+    padding: 0px 30px;
     border-radius: 50px;
     margin: 15px auto;
-    max-width: 1200px; /* gọn lại, không full width */
+    max-width: 1200px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
@@ -45,8 +40,9 @@ body {
     gap: 8px;
     transition: transform 0.3s ease;
 }
+
     .navbar-brand i {
-        color: #FF7A00; /* icon màu cam cho hợp */
+        color: #FF7A00;
     }
 
     .navbar-brand:hover {
@@ -68,36 +64,59 @@ body {
     z-index: 1;
 }
 
-    /* Hiệu ứng hover */
     .navbar-nav .nav-link:hover {
         color: #fff !important;
         background: linear-gradient(135deg, #FF914D, #FF4D4D);
         box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
     }
 
-/* ==================== DROPDOWN ==================== */
-.dropdown-menu {
+/* ==================== DROPDOWN - FIX ==================== */
+.navbar-nav .nav-item.dropdown {
+    position: relative;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 8px !important;
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     animation: fadeIn 0.3s ease;
+    z-index: 1050;
+    min-width: 180px;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .dropdown-item {
     border-radius: 10px;
     transition: all 0.3s ease;
+    padding: 10px 15px;
 }
 
     .dropdown-item:hover {
         background: #ff4d4d;
-        color: #fff;
+        color: #fff !important;
     }
+
+    .dropdown-item i {
+        margin-right: 8px;
+        width: 18px;
+        display: inline-block;
+    }
+
+.dropdown-divider {
+    margin: 8px 0;
+    border-color: rgba(0,0,0,0.1);
+}
 
 /* ==================== ANIMATION ==================== */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(-10px);
     }
 
     to {
@@ -106,8 +125,7 @@ body {
     }
 }
 
-
-
+/* ==================== FOOTER ==================== */
 .admin-footer {
     background: #fff;
     border-top: 1px solid #e0e0e0;
