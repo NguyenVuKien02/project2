@@ -65,11 +65,30 @@
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="AnhSanPham" class="form-label">Hình ảnh</label>
-                        <input asp-for="AnhSanPham" class="form-control" />
+                        <label asp-for="AnhSanPham" class="form-label">Chọn ảnh sản phẩm</label>
+                        <select id="imageSelect" asp-for="AnhSanPham" class="form-select">
+                            <option value="@Model.AnhSanPham">-- Giữ nguyên ảnh hiện tại: @Model.AnhSanPham --</option>
+                            @foreach (var img in ViewBag.ImageFiles as List<string>)
+                            {
+                                <option value="@img" selected="@(Model.AnhSanPham == img)">
+                                    @img
+                                </option>
+                            }
+                        </select>
                         <span asp-validation-for="AnhSanPham" class="text-danger"></span>
-                        <small class="text-muted">Đặt file ảnh trong thư mục wwwroot/images/</small>
+                        <small class="text-muted">Ảnh nằm trong thư mục <strong>wwwroot/images/</strong></small>
+
+                        <div class="mt-3 text-center">
+                            <img id="previewImage"
+                                 src="~/images/@Model.AnhSanPham"
+                                 alt="@Model.TenSanPham"
+                                 class="img-fluid rounded shadow-sm"
+                                 style="max-height:200px;"
+                                 onerror="this.src='~/images/default-food.jpg'" />
+                            <p id="previewName" class="text-muted small">Ảnh hiện tại: @Model.AnhSanPham</p>
+                        </div>
                     </div>
+
 
                     <div class="mb-3">
                         <label asp-for="MoTaSanPham" class="form-label">Mô tả sản phẩm</label>
@@ -115,5 +134,15 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script>
+            document.getElementById("imageSelect").addEventListener("change", function () {
+                const selectedImage = this.value;
+                const preview = document.getElementById("previewImage");
+                const name = document.getElementById("previewName");
+                preview.src = "/images/" + selectedImage;
+                name.textContent = "Ảnh xem trước: " + selectedImage;
+            });
+        </script>
+
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vt8KJitf3QZo7p0lssw1f9zv9JZK9dSid8MU2x2GQCE=",
+  "Hash": "YJBAskq3eosYRa77kafyhme63N8+J/tceewnVWYzl0c=",
   "Source": "Project2",
   "BasePath": "_content/Project2",
   "Mode": "Default",
@@ -224,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\ga_ran_cay.jpg"
+    },
+    {
+      "Identity": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\kem_socola.jpg",
+      "SourceId": "Project2",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\web bán đồ ăn\\Project2\\wwwroot\\",
+      "BasePath": "_content/Project2",
+      "RelativePath": "images/kem_socola.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\kem_socola.jpg"
     },
     {
       "Identity": "E:\\web bán đồ ăn\\Project2\\wwwroot\\images\\kem_vanilla.jpg",

@@ -2,7 +2,139 @@
 @{
     ViewData["Title"] = Model.TenSanPham;
 }
+<style>
+    /* ----- Tổng thể ----- */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+}
 
+h2, h4 {
+    font-weight: 600;
+    color: #222;
+}
+
+/* ----- Ảnh sản phẩm ----- */
+.img-fluid {
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.img-fluid:hover {
+    transform: scale(1.03);
+}
+
+/* ----- Thông tin sản phẩm ----- */
+    .col-md-6 img.img-fluid {
+        width: 100%;
+        max-width: 500px; 
+        height: 400px;
+        display: block;
+        margin: 0 auto;
+    }
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #dc3545;
+}
+
+.badge.bg-success {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+label {
+    font-weight: 500;
+}
+
+/* ----- Nút thao tác ----- */
+.btn {
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 10px 18px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #007bff, #0d6efd);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #0069d9, #0b5ed7);
+}
+
+.btn-outline-secondary:hover {
+    background-color: #e9ecef;
+}
+
+/* ----- Đánh giá khách hàng ----- */
+.card {
+    border-radius: 14px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}
+
+.card-body {
+    padding: 16px 20px;
+}
+
+/* ----- Form đánh giá ----- */
+#danhGiaForm textarea {
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s;
+}
+
+#danhGiaForm textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 4px rgba(13,110,253,0.25);
+}
+
+/* ----- Ngôi sao đánh giá ----- */
+.star-rating {
+    direction: rtl;
+    display: inline-flex;
+    gap: 4px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ccc;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffc107;
+}
+
+/* ----- Phần hiển thị đánh giá ----- */
+.card h6 {
+    font-weight: 600;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+
+
+</style>
 <div class="row">
     <div class="col-md-6">
         <img src="~/images/@Model.AnhSanPham" class="img-fluid rounded" alt="@Model.TenSanPham"

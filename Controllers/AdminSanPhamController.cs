@@ -84,7 +84,23 @@ namespace Project2.Controllers
             var redirectResult = CheckAdminAccess();
             if (redirectResult != null) return redirectResult;
 
+            // Lấy danh mục
             ViewBag.DanhMucs = _context.DanhMucs.ToList();
+
+            // Lấy danh sách ảnh trong wwwroot/images/
+            var imageFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            if (Directory.Exists(imageFolder))
+            {
+                var imageFiles = Directory.GetFiles(imageFolder)
+                                          .Select(Path.GetFileName)
+                                          .ToList();
+                ViewBag.ImageFiles = imageFiles;
+            }
+            else
+            {
+                ViewBag.ImageFiles = new List<string>(); // nếu chưa có thư mục images
+            }
+
             return View();
         }
 
@@ -124,8 +140,17 @@ namespace Project2.Controllers
             if (sanPham == null) return NotFound();
 
             ViewBag.DanhMucs = _context.DanhMucs.ToList();
+
+            // 👉 Lấy danh sách ảnh có trong thư mục /images/
+            var imageDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+            var imageFiles = Directory.Exists(imageDir)
+                ? Directory.GetFiles(imageDir).Select(Path.GetFileName).ToList()
+                : new List<string>();
+            ViewBag.ImageFiles = imageFiles;
+
             return View(sanPham);
         }
+
 
         // POST: Sửa sản phẩm
         [HttpPost]

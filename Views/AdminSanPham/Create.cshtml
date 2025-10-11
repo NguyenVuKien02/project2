@@ -51,10 +51,23 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label asp-for="AnhSanPham" class="form-label">Hình ảnh</label>
-                                <input asp-for="AnhSanPham" class="form-control" placeholder="Tên file ảnh (vd: pizza.jpg)" />
-                                <span asp-validation-for="AnhSanPham" class="text-danger"></span>
-                                <small class="text-muted">Đặt file ảnh trong thư mục wwwroot/images/</small>
+                                <div class="mb-3">
+                                    <label asp-for="AnhSanPham" class="form-label">Hình ảnh</label>
+                                    <select asp-for="AnhSanPham" class="form-select" id="AnhSanPhamSelect">
+                                        <option value="">-- Chọn ảnh sản phẩm --</option>
+                                        @foreach (var img in ViewBag.ImageFiles as List<string>)
+                                        {
+                                            <option value="@img">@img</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="AnhSanPham" class="text-danger"></span>
+
+                                    <!-- Ảnh xem trước -->
+                                    <div class="mt-3 text-center">
+                                        <img id="previewImage" src="" alt="Xem trước ảnh" class="img-fluid rounded" style="max-height:200px;display:none;border:1px solid #ddd;padding:5px;">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -97,5 +110,21 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script>
+            document.getElementById("AnhSanPhamSelect").addEventListener("change", function () {
+                const selectedImage = this.value;
+                const preview = document.getElementById("previewImage");
+
+                if (selectedImage) {
+                    preview.src = `/images/${selectedImage}`;
+                    preview.style.display = "block";
+                } else {
+                    preview.src = "";
+                    preview.style.display = "none";
+                }
+            });
+        </script>
     }
+   
+
 }
