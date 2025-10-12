@@ -12,6 +12,12 @@
             </div>
             <div class="card-body">
                 <form asp-action="XacNhanDatHang" method="post">
+                    @if (ViewBag.MuaNgay == true)
+                    {
+                        <input type="hidden" name="sanPhamId" value="@ViewBag.SanPham.IdsanPham" />
+                        <input type="hidden" name="soLuong" value="@ViewBag.SoLuong" />
+                    }
+
                     <div class="mb-3">
                         <label class="form-label">Họ tên người nhận:</label>
                         <input type="text" class="form-control" value="@Context.Session.GetString("UserName")" readonly>
@@ -52,16 +58,52 @@
                 <h5>Chi tiết đơn hàng</h5>
             </div>
             <div class="card-body">
-                @foreach (var item in ViewBag.GioHangs as List<GioHang>)
+                @if (ViewBag.MuaNgay == true)
                 {
                     <div class="d-flex justify-content-between mb-2">
                         <div>
-                            <small>@item.IdsanPhamNavigation.TenSanPham</small><br>
-                            <small class="text-muted">@item.SoLuongTrongGio x @item.IdsanPhamNavigation.GiaSanPham.ToString("N0")đ</small>
+                            <small>@ViewBag.SanPham.TenSanPham</small><br>
+                            <small class="text-muted">@ViewBag.SoLuong x @ViewBag.SanPham.GiaSanPham.ToString("N0")đ</small>
                         </div>
-                        <span>@((item.IdsanPhamNavigation.GiaSanPham * item.SoLuongTrongGio).ToString("N0"))đ</span>
+                        <span>@((ViewBag.SanPham.GiaSanPham * ViewBag.SoLuong).ToString("N0"))đ</span>
+                    </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>Phí giao hàng:</span>
+                        <span>Miễn phí</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold">
+                        <span>Tổng cộng:</span>
+                        <span class="text-danger">@ViewBag.TongTien.ToString("N0") VNĐ</span>
                     </div>
                 }
+                else
+                {
+                    @foreach (var item in ViewBag.GioHangs as List<GioHang>)
+                    {
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <small>@item.IdsanPhamNavigation.TenSanPham</small><br>
+                                <small class="text-muted">@item.SoLuongTrongGio x @item.IdsanPhamNavigation.GiaSanPham.ToString("N0")đ</small>
+                            </div>
+                            <span>@((item.IdsanPhamNavigation.GiaSanPham * item.SoLuongTrongGio).ToString("N0"))đ</span>
+                        </div>
+                    }
+
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>Phí giao hàng:</span>
+                        <span>Miễn phí</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold">
+                        <span>Tổng cộng:</span>
+                        <span class="text-danger">@ViewBag.TongTien.ToString("N0") VNĐ</span>
+                    </div>
+                }
+
 
                 <hr>
                 <div class="d-flex justify-content-between">

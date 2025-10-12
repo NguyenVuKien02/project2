@@ -75,8 +75,18 @@ namespace Project2.Controllers
 
             if (sanPham == null) return NotFound();
 
+            // Chỉ tính số lượng đã bán trong các đơn "Hoàn thành"
+            var soLuongDaBan = await _context.ChiTietDonHangs
+                .Include(c => c.IddonHangNavigation)
+                .Where(c => c.IdsanPham == id && c.IddonHangNavigation.Status == "Hoàn thành")
+                .SumAsync(c => (int?)c.SoLuong) ?? 0;
+
+            ViewBag.SoLuongDaBan = soLuongDaBan;
+
             return View(sanPham);
         }
+
+
 
         // GET: Tạo sản phẩm mới
         public IActionResult Create()

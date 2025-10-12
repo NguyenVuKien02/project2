@@ -73,13 +73,32 @@ namespace Project2.Controllers
         }
 
         // GET: Thanh toán
-        public async Task<IActionResult> ThanhToan()
+        public async Task<IActionResult> ThanhToan(int? sanPhamId, int? soLuong)
         {
             if (!IsLoggedIn())
                 return RedirectToAction("DangNhap", "TaiKhoan");
 
             var userId = int.Parse(HttpContext.Session.GetString("UserId"));
 
+            // ✅ Trường hợp MUA NGAY
+            if (sanPhamId.HasValue && soLuong.HasValue)
+            {
+                var sanPham = await _context.SanPhams.FindAsync(sanPhamId.Value);
+                if (sanPham == null)
+                {
+                    TempData["ErrorMessage"] = "Sản phẩm không tồn tại!";
+                    return RedirectToAction("Index", "SanPham");
+                }
+
+                ViewBag.MuaNgay = true;
+                ViewBag.SanPham = sanPham;
+                ViewBag.SoLuong = soLuong.Value;
+                ViewBag.TongTien = sanPham.GiaSanPham * soLuong.Value;
+
+                return View();
+            }
+
+            // ✅ Trường hợp thanh toán từ GIỎ HÀNG
             var gioHangs = await _context.GioHangs
                 .Include(g => g.IdsanPhamNavigation)
                 .Where(g => g.IdtaiKhoan == userId)
@@ -91,6 +110,7 @@ namespace Project2.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.MuaNgay = false;
             ViewBag.TongTien = gioHangs.Sum(g => g.IdsanPhamNavigation.GiaSanPham * g.SoLuongTrongGio);
             ViewBag.GioHangs = gioHangs;
 
@@ -100,28 +120,67 @@ namespace Project2.Controllers
         // POST: Xác nhận đặt hàng
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> XacNhanDatHang(string diaChiGiaoHang)
+
+        public async Task<IActionResult> XacNhanDatHang(string diaChiGiaoHang, int? sanPhamId, int? soLuong)
         {
             if (!IsLoggedIn())
                 return RedirectToAction("DangNhap", "TaiKhoan");
 
             var userId = int.Parse(HttpContext.Session.GetString("UserId"));
 
-            var gioHangs = await _context.GioHangs
-                .Include(g => g.IdsanPhamNavigation)
-                .Where(g => g.IdtaiKhoan == userId)
-                .ToListAsync();
-
-            if (!gioHangs.Any())
-            {
-                TempData["ErrorMessage"] = "Giỏ hàng trống!";
-                return RedirectToAction("Index");
-            }
-
             try
             {
-                // Tạo đơn hàng
-                var donHang = new DonHang
+                // ✅ Nếu là MUA NGAY
+                if (sanPhamId.HasValue && soLuong.HasValue)
+                {
+                    var sanPham = await _context.SanPhams.FindAsync(sanPhamId.Value);
+                    if (sanPham == null)
+                    {
+                        TempData["ErrorMessage"] = "Sản phẩm không tồn tại!";
+                        return RedirectToAction("Index", "SanPham");
+                    }
+
+                    // --- Tạo đơn hàng ---
+                    var donHang = new DonHang
+                    {
+                        IdtaiKhoan = userId,
+                        NgayTaoDonHang = DateTime.Now,
+                        TongTien = sanPham.GiaSanPham * soLuong.Value,
+                        Status = "Chờ xác nhận",
+                        DiaChiGiaoHang = diaChiGiaoHang
+                    };
+
+                    _context.DonHangs.Add(donHang);
+                    await _context.SaveChangesAsync();
+
+                    // --- Chi tiết đơn hàng ---
+                    var chiTiet = new ChiTietDonHang
+                    {
+                        IddonHang = donHang.IddonHang,
+                        IdsanPham = sanPham.IdsanPham,
+                        SoLuong = soLuong.Value,
+                        Gia = sanPham.GiaSanPham
+                    };
+                    _context.ChiTietDonHangs.Add(chiTiet);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = "Đặt hàng thành công!";
+                    return RedirectToAction("Index", "DonHang");
+                }
+
+                // ✅ Nếu là thanh toán từ GIỎ HÀNG
+                var gioHangs = await _context.GioHangs
+                    .Include(g => g.IdsanPhamNavigation)
+                    .Where(g => g.IdtaiKhoan == userId)
+                    .ToListAsync();
+
+                if (!gioHangs.Any())
+                {
+                    TempData["ErrorMessage"] = "Giỏ hàng trống!";
+                    return RedirectToAction("Index");
+                }
+
+                var donHangGH = new DonHang
                 {
                     IdtaiKhoan = userId,
                     NgayTaoDonHang = DateTime.Now,
@@ -130,15 +189,14 @@ namespace Project2.Controllers
                     DiaChiGiaoHang = diaChiGiaoHang
                 };
 
-                _context.DonHangs.Add(donHang);
+                _context.DonHangs.Add(donHangGH);
                 await _context.SaveChangesAsync();
 
-                // Tạo chi tiết đơn hàng
                 foreach (var item in gioHangs)
                 {
                     var chiTiet = new ChiTietDonHang
                     {
-                        IddonHang = donHang.IddonHang,
+                        IddonHang = donHangGH.IddonHang,
                         IdsanPham = item.IdsanPham,
                         SoLuong = item.SoLuongTrongGio,
                         Gia = item.IdsanPhamNavigation.GiaSanPham
@@ -146,18 +204,18 @@ namespace Project2.Controllers
                     _context.ChiTietDonHangs.Add(chiTiet);
                 }
 
-                // Xóa giỏ hàng
                 _context.GioHangs.RemoveRange(gioHangs);
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = "Đặt hàng thành công! Đơn hàng đang chờ xác nhận.";
+                TempData["SuccessMessage"] = "Đặt hàng thành công!";
                 return RedirectToAction("Index", "DonHang");
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Có lỗi xảy ra: " + ex.Message;
+                TempData["ErrorMessage"] = "Lỗi: " + ex.Message;
                 return RedirectToAction("ThanhToan");
             }
         }
+
     }
 }

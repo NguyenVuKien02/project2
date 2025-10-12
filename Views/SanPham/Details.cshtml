@@ -170,6 +170,12 @@ label {
                 <a href="@Url.Action("Index", "GioHang")" class="btn btn-outline-secondary">
                     <i class="fas fa-shopping-cart"></i> Xem giỏ hàng
                 </a>
+
+                
+                <button type="button" class="btn btn-danger me-md-2" id="btnMuaNgay">
+                    <i class="fas fa-bolt"></i> Mua ngay
+                </button>
+
             </div>
         </form>
 
@@ -309,6 +315,16 @@ label {
                 console.error('Error:', error);
                 alert('Có lỗi xảy ra!');
             });
+        });
+    </script>
+
+    <script>
+        document.getElementById("btnMuaNgay")?.addEventListener("click", function () {
+            const sanPhamId = document.querySelector("input[name='sanPhamId']").value;
+            const soLuong = document.querySelector("input[name='soLuong']").value;
+
+            // ✅ Chuyển trực tiếp đến trang ThanhToan và truyền id + số lượng
+            window.location.href = '@Url.Action("ThanhToan", "GioHang")' + `?sanPhamId=${sanPhamId}&soLuong=${soLuong}`;
         });
     </script>
 }
