@@ -24,43 +24,55 @@ namespace Project2.Controllers
             ViewData["CurrentFilter"] = searchString;
             ViewBag.DanhMucId = danhMucId;
 
+            // Truy vấn sản phẩm còn hàng
             var sanPhamsQuery = _context.SanPhams
                 .Include(s => s.IddanhMucNavigation)
                 .Where(s => s.Status == "Còn hàng");
 
-            // Lọc theo danh mục 
+            // Lọc theo danh mục
             if (danhMucId.HasValue && danhMucId > 0)
             {
                 sanPhamsQuery = sanPhamsQuery.Where(s => s.IddanhMuc == danhMucId);
             }
 
-            // Tìm kiếm theo tên sản phẩm 
-            if (!String.IsNullOrEmpty(searchString))
+            // Tìm kiếm theo tên sản phẩm
+            if (!string.IsNullOrEmpty(searchString))
             {
                 sanPhamsQuery = sanPhamsQuery.Where(s => s.TenSanPham.Contains(searchString));
             }
 
+            // Lấy toàn bộ sản phẩm (để đếm tổng & phân trang)
             var sanPhams = await sanPhamsQuery
                 .OrderByDescending(s => s.NgayTaoSanPham)
                 .ToListAsync();
 
-            // Tạo PagedList thủ công
+            // Phân trang thủ công
             var pagedList = sanPhams
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
-            // Tính toán thông tin phân trang
+            // ✅ Thêm phần tính số lượng đã bán (chỉ tính đơn "Hoàn thành")
+            var daBanDict = await _context.ChiTietDonHangs
+                .Where(ct => ct.IddonHangNavigation.Status == "Hoàn thành")
+                .GroupBy(ct => ct.IdsanPham)
+                .Select(g => new { IdsanPham = g.Key, SoLuong = g.Sum(x => x.SoLuong) })
+                .ToDictionaryAsync(x => x.IdsanPham, x => x.SoLuong);
+
+            ViewBag.DaBanDict = daBanDict;
+
+            // ✅ Tính toán thông tin phân trang
             ViewBag.CurrentPage = pageNumber;
             ViewBag.TotalPages = (int)Math.Ceiling((double)sanPhams.Count / pageSize);
             ViewBag.TotalItems = sanPhams.Count;
             ViewBag.PageSize = pageSize;
 
-            // Danh sách danh mục cho filter
+            // ✅ Danh sách danh mục cho bộ lọc
             ViewBag.DanhMucs = await _context.DanhMucs.ToListAsync();
 
             return View(pagedList);
         }
+
 
         // GET: Chi tiết sản phẩm
         public async Task<IActionResult> Details(int? id)
