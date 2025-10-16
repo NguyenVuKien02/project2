@@ -77,27 +77,61 @@ namespace Project2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: Xóa tài khoản
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        // ✅ GET: Hiển thị xác nhận xóa
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
         {
             var redirectResult = CheckAdminAccess();
             if (redirectResult != null) return redirectResult;
 
-            var taiKhoan = await _context.TaiKhoans.FindAsync(id);
-            if (taiKhoan != null && taiKhoan.Role?.ToLower() != "admin")
+            if (id == null) return NotFound();
+
+            var taiKhoan = await _context.TaiKhoans
+                .Include(t => t.DonHangs)
+                .FirstOrDefaultAsync(t => t.IDTaiKhoan == id);
+
+            if (taiKhoan == null) return NotFound();
+
+            return View(taiKhoan);
+        }
+
+        // ✅ POST: Xóa thật sự (sau khi xác nhận)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var redirectResult = CheckAdminAccess();
+            if (redirectResult != null) return redirectResult;
+
+            var taiKhoan = await _context.TaiKhoans
+                .Include(t => t.DonHangs)
+                .FirstOrDefaultAsync(t => t.IDTaiKhoan == id);
+
+            if (taiKhoan == null)
             {
-                _context.TaiKhoans.Remove(taiKhoan);
-                await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Xóa tài khoản thành công!";
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Không thể xóa tài khoản admin!";
+                TempData["ErrorMessage"] = "Tài khoản không tồn tại!";
+                return RedirectToAction(nameof(Index));
             }
 
+            if (taiKhoan.DonHangs.Any())
+            {
+                TempData["ErrorMessage"] = "Không thể xóa tài khoản vì đã có đơn hàng!";
+                return RedirectToAction(nameof(Index));
+            }
+
+            if (taiKhoan.Role?.ToLower() == "admin")
+            {
+                TempData["ErrorMessage"] = "Không thể xóa tài khoản admin!";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.TaiKhoans.Remove(taiKhoan);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Xóa tài khoản thành công!";
             return RedirectToAction(nameof(Index));
         }
+
+
     }
 }

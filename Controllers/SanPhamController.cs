@@ -101,6 +101,8 @@ namespace Project2.Controllers
                 ViewBag.DaMuaSanPham = daMua;
             }
 
+
+
             return View(sanPham);
         }
 

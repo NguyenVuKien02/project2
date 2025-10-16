@@ -28,6 +28,15 @@ namespace Project2.Controllers
                     .Take(6)
                     .ToListAsync();
 
+                // ✅ Thêm phần tính số lượng đã bán (chỉ tính đơn "Hoàn thành")
+                var daBanDict = await _context.ChiTietDonHangs
+                    .Where(ct => ct.IddonHangNavigation.Status == "Hoàn thành")
+                    .GroupBy(ct => ct.IdsanPham)
+                    .Select(g => new { IdsanPham = g.Key, SoLuong = g.Sum(x => x.SoLuong) })
+                    .ToDictionaryAsync(x => x.IdsanPham, x => x.SoLuong);
+
+                ViewBag.DaBanDict = daBanDict;
+
                 return View(sanPhamNoiBat);
             }
             catch (Exception ex)

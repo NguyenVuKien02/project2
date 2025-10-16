@@ -11,6 +11,16 @@ body {
     z-index: 1030;
 }
 
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: #ff4d4d !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
 /* Container fluid để tránh bị che */
 .container-fluid {
     padding: 0;

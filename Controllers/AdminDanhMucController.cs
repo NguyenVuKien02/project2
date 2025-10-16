@@ -46,6 +46,7 @@ namespace Project2.Controllers
                     d.MoTaDanhMuc.Contains(searchString));
             }
 
+
             return View(await danhMucs.OrderByDescending(d => d.NgayTaoDanhMuc).ToListAsync());
         }
 

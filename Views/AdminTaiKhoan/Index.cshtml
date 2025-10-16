@@ -5,7 +5,10 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Quản lý tài khoản</h2>
+    <h2><i class="fas fa-users"></i> Quản lý tài khoản</h2>
+    <div>
+        <span class="badge bg-primary">Tổng: @Model.Count tài khoản</span>
+    </div>
 </div>
 
 <div class="table-responsive">
@@ -53,10 +56,14 @@
                                 </select>
                             </form>
 
-                            <button type="button" class="btn btn-danger btn-sm"
-                                    onclick="confirmDelete(@item.IDTaiKhoan, '@item.FullName')">
-                                Xóa
-                            </button>
+                            <form asp-action="Delete" asp-route-id="@item.IDTaiKhoan" method="get" class="d-inline">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Xóa
+                                </button>
+                            </form>
+
+
+
                         }
                     </td>
                 </tr>
@@ -65,18 +72,4 @@
     </table>
 </div>
 
-<!-- Form xóa ẩn -->
-<form id="deleteForm" asp-action="Delete" method="post" style="display: none;">
-    <input type="hidden" id="deleteId" name="id" />
-</form>
 
-@section Scripts {
-    <script>
-        function confirmDelete(id, name) {
-            if (confirm(`Bạn có chắc muốn xóa tài khoản "${name}"?`)) {
-                document.getElementById('deleteId').value = id;
-                document.getElementById('deleteForm').submit();
-            }
-        }
-    </script>
-}

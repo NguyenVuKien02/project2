@@ -1,0 +1,82 @@
+﻿@model Project2.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Xóa tài khoản";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-user-times"></i> Xác nhận xóa tài khoản
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <strong>Cảnh báo:</strong> Bạn có chắc chắn muốn xóa tài khoản này?
+                </div>
+
+                <dl class="row">
+                    <dt class="col-sm-3"><i class="fas fa-id-card"></i> ID:</dt>
+                    <dd class="col-sm-9">@Model.IDTaiKhoan</dd>
+
+                    <dt class="col-sm-3"><i class="fas fa-user"></i> Họ tên:</dt>
+                    <dd class="col-sm-9"><strong>@Model.FullName</strong></dd>
+
+                    <dt class="col-sm-3"><i class="fas fa-envelope"></i> Email:</dt>
+                    <dd class="col-sm-9">@Model.Email</dd>
+
+                    <dt class="col-sm-3"><i class="fas fa-phone"></i> SĐT:</dt>
+                    <dd class="col-sm-9">@Model.Phone</dd>
+
+                    <dt class="col-sm-3"><i class="fas fa-user-shield"></i> Quyền:</dt>
+                    <dd class="col-sm-9">
+                        <span class="badge @(Model.Role?.ToLower() == "admin" ? "bg-danger" : "bg-primary")">@Model.Role</span>
+                    </dd>
+
+                    <dt class="col-sm-3"><i class="fas fa-calendar-alt"></i> Ngày đăng ký:</dt>
+                    <dd class="col-sm-9">@Model.NgayDangKi?.ToString("dd/MM/yyyy HH:mm:ss")</dd>
+
+                    <dt class="col-sm-3"><i class="fas fa-shopping-cart"></i> Số đơn hàng:</dt>
+                    <dd class="col-sm-9">
+                        <span class="badge bg-info">@Model.DonHangs.Count đơn hàng</span>
+                        @if (Model.DonHangs.Any())
+                        {
+                            <div class="alert alert-danger mt-2">
+                                <i class="fas fa-ban"></i>
+                                <strong>Không thể xóa!</strong> Tài khoản này đã có đơn hàng.
+                               
+                            </div>
+                        }
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="IDTaiKhoan" />
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Quay lại
+                        </a>
+
+                        @if (!Model.DonHangs.Any() && Model.Role?.ToLower() != "admin")
+                        {
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Xác nhận xóa
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-danger" disabled>
+                                <i class="fas fa-ban"></i> Không thể xóa
+                            </button>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -57,6 +57,8 @@ namespace Project2.Controllers
             // Lấy danh mục để đổ vào dropdown
             ViewBag.DanhMucs = await _context.DanhMucs.ToListAsync();
 
+
+
             return View(await sanPhams.ToListAsync());
         }
 
@@ -221,16 +223,30 @@ namespace Project2.Controllers
             if (redirectResult != null) return redirectResult;
 
             var sanPham = await _context.SanPhams.FindAsync(id);
-            if (sanPham != null)
+            if (sanPham == null)
             {
-                _context.SanPhams.Remove(sanPham);
-                await _context.SaveChangesAsync();
-
-                TempData["SuccessMessage"] = "Xóa sản phẩm thành công!";
+                TempData["ErrorMessage"] = "Sản phẩm không tồn tại!";
+                return RedirectToAction(nameof(Index));
             }
 
+            // Kiểm tra xem sản phẩm có trong đơn hàng không
+            bool coTrongDonHang = await _context.ChiTietDonHangs
+                .AnyAsync(c => c.IdsanPham == id);
+
+            if (coTrongDonHang)
+            {
+                TempData["ErrorMessage"] = "Không thể xóa sản phẩm này vì đã có trong đơn hàng!";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.SanPhams.Remove(sanPham);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Xóa sản phẩm thành công!";
             return RedirectToAction(nameof(Index));
         }
+
+
 
         private bool SanPhamExists(int id)
         {

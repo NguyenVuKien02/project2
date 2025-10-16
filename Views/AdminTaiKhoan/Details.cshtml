@@ -144,26 +144,33 @@
             </div>
             <div class="card-body">
                 <div class="row text-center">
-                    <div class="col-12 mb-3">
+                    <div class="col-6 mb-3">
                         <div class="border-bottom pb-2">
                             <h4 class="text-primary mb-1">@(Model.DonHangs?.Count() ?? 0)</h4>
                             <small class="text-muted">Tổng đơn hàng</small>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <h5 class="text-success mb-1">@(Model.DonHangs?.Where(d => d.Status == "Hoàn thành").Count() ?? 0)</h5>
-                        <small class="text-muted">Đã hoàn thành</small>
+                    <div class="col-6 mb-3">
+                        <div class="border-bottom pb-2">
+                            <h4 class="text-success mb-1">@(Model.DonHangs?.Where(d => d.Status == "Hoàn thành").Count() ?? 0)</h4>
+                            <small class="text-muted">Đã hoàn thành</small>
+                        </div>
                     </div>
+
                     <div class="col-6">
                         <h5 class="text-warning mb-1">@(Model.DonHangs?.Where(d => d.Status == "Chờ xác nhận").Count() ?? 0)</h5>
                         <small class="text-muted">Chờ xác nhận</small>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="text-danger mb-1">@(Model.DonHangs?.Where(d => d.Status == "Đã hủy").Count() ?? 0)</h5>
+                        <small class="text-muted">Đã hủy</small>
                     </div>
                 </div>
 
                 <hr>
 
                 <div class="text-center">
-                    <h5 class="text-info">@(Model.DonHangs?.Sum(d => d.TongTien)?.ToString("N0") ?? "0") VNĐ</h5>
+                    <h5 class="text-info">@(Model.DonHangs?.Where(d => d.Status == "Hoàn thành").Sum(d => d.TongTien)?.ToString("N0") ?? "0") VNĐ</h5>
                     <small class="text-muted">Tổng giá trị đơn hàng</small>
                 </div>
             </div>

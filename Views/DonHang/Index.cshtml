@@ -2,9 +2,7 @@
 @{
     ViewData["Title"] = "Đơn hàng của tôi";
 }
-
 <h2>Đơn hàng của tôi</h2>
-
 @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success alert-dismissible fade show">
@@ -12,7 +10,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
-
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
 @if (Model.Any())
 {
     <div class="row">
@@ -28,25 +32,66 @@
                         <p><strong>Ngày đặt:</strong> @donHang.NgayTaoDonHang?.ToString("dd/MM/yyyy HH:mm")</p>
                         <p><strong>Tổng tiền:</strong> <span class="text-danger">@donHang.TongTien?.ToString("N0") VNĐ</span></p>
                         <p><strong>Địa chỉ giao hàng:</strong> @donHang.DiaChiGiaoHang</p>
-
-                        <div class="d-flex justify-content-between">
-                            <a href="@Url.Action("Details", new { id = donHang.IddonHang })"
-                               class="btn btn-outline-primary btn-sm">
-                                <i class="fas fa-eye"></i> Chi tiết
-                            </a>
-
-                            @if (donHang.Status == "Chờ xác nhận")
-                            {
-                                <small class="text-muted">Đang chờ xác nhận...</small>
-                            }
-                            else if (donHang.Status == "Hoàn thành")
-                            {
-                                <small class="text-success">✓ Đã hoàn thành</small>
-                            }
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <a href="@Url.Action("Details", new { id = donHang.IddonHang })"
+                                   class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-eye"></i> Chi tiết
+                                </a>
+                                @if (donHang.Status == "Chờ xác nhận")
+                                {
+                                    <button type="button" class="btn btn-outline-danger btn-sm ms-2"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#cancelModal@(donHang.IddonHang)">
+                                        <i class="fas fa-times"></i> Hủy đơn
+                                    </button>
+                                }
+                            </div>
+                            <div>
+                                @if (donHang.Status == "Chờ xác nhận")
+                                {
+                                    <small class="text-muted">Đang chờ xác nhận...</small>
+                                }
+                                else if (donHang.Status == "Hoàn thành")
+                                {
+                                    <small class="text-success">✓ Đã hoàn thành</small>
+                                }
+                                else if (donHang.Status == "Đã hủy")
+                                {
+                                    <small class="text-danger">✗ Đã hủy</small>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Modal xác nhận hủy đơn -->
+            @if (donHang.Status == "Chờ xác nhận")
+            {
+                <div class="modal fade" id="cancelModal@(donHang.IddonHang)" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Xác nhận hủy đơn hàng</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Bạn có chắc chắn muốn hủy đơn hàng <strong>#@donHang.IddonHang</strong>?</p>
+                                <p class="text-muted">Hành động này không thể hoàn tác.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                <form asp-action="Cancel" asp-route-id="@donHang.IddonHang" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-times"></i> Xác nhận hủy
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         }
     </div>
 }
@@ -61,7 +106,6 @@ else
         </a>
     </div>
 }
-
 @functions {
     public string GetStatusClass(string status)
     {

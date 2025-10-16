@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\web bán đồ ăn\Project2
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/web bán đồ ăn/Project2/Views/AdminDanhMuc/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5EYW5oTXVjXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/web bán đồ ăn/Project2/Views/AdminDanhMuc/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5EYW5oTXVjXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,10 +36,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/web bán đồ ăn/Project2/Views/AdminDanhMuc/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5EYW5oTXVjXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/web bán đồ ăn/Project2/Views/AdminDanhMuc/Index1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5EYW5oTXVjXEluZGV4MS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/web bán đồ ăn/Project2/Views/AdminDonHang/Details.cshtml]
@@ -64,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/web bán đồ ăn/Project2/Views/AdminSanPham/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TYW5QaGFtXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/web bán đồ ăn/Project2/Views/AdminTaiKhoan/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5UYWlLaG9hblxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/web bán đồ ăn/Project2/Views/AdminTaiKhoan/Details.cshtml]
